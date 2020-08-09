@@ -1,11 +1,14 @@
-import React from 'react'
-import { PageProps } from 'gatsby'
+import { PageProps } from 'gatsby';
+import React, { FC } from 'react';
 
-export default function IndexRoute(props: PageProps) {
+const IndexRoute: FC<PageProps> = (props: PageProps) => {
+  const { path } = props;
   return (
     <>
       <h1>Path:</h1>
-      <p>{ props.path }</p>
+      <p>{path}</p>
     </>
-  )
-}
+  );
+};
+
+export default IndexRoute;

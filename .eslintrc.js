@@ -56,11 +56,6 @@ module.exports = {
     semi: [2, 'always'],
     'prettier/prettier': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    'react/jsx-filename-extension': [
-      1,
-      { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }
-    ],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/button-has-type': 0,
     'import/no-extraneous-dependencies': [2, { devDependencies: ['**/test.tsx', '**/test.ts'] }],
@@ -68,6 +63,7 @@ module.exports = {
     // copied from back-end config
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
+    'react/prop-types': [2, { ignore: ['children'] }],
     camelcase: [
       'error',
       {
@@ -183,7 +179,6 @@ module.exports = {
     'import/no-duplicates': 'error',
     '@typescript-eslint/no-explicit-any': 2,
     '@typescript-eslint/no-empty-interface': 2,
-    '@typescript-eslint/explicit-function-return-type': 2,
     '@typescript-eslint/member-ordering': 2,
     '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/interface-name-prefix': 0,

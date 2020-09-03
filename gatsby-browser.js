@@ -1,6 +1,6 @@
 import React from 'react';
 
-import App from './src/components/App';
+import { App } from './src/components';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

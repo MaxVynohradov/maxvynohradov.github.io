@@ -3,6 +3,8 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { THEME_MODES, ThemeContext, useDarkMode } from '../models/theme';
 import { DarkTheme, LightTheme } from '../themes';
+import { Header } from './Header';
+import { MainContainer } from './MainContainer';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,17 +21,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App: FC = ({ children }) => {
+export const App: FC = ({ children }) => {
   const [themeMode, toggleTheme] = useDarkMode();
   const theme = themeMode === THEME_MODES.LIGHT ? LightTheme : DarkTheme;
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
       <ThemeProvider theme={theme}>
         <GlobalStyle theme={theme} />
-        {children}
+        <Header />
+        <MainContainer>{children}</MainContainer>
       </ThemeProvider>
     </ThemeContext.Provider>
   );
 };
-
-export default App;

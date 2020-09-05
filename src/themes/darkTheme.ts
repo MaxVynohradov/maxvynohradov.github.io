@@ -5,7 +5,7 @@ export const DarkTheme: DefaultTheme = {
     radius: '20px',
   },
   fonts: {
-    main: 'Muli, sans-serif',
+    main: 'Quicksand, sans-serif',
     code: 'Roboto Mono, monospace',
   },
   colors: {

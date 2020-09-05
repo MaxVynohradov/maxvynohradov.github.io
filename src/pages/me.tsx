@@ -5,7 +5,7 @@ const BlogRoute: FC<PageProps> = (props: PageProps) => {
   const { path } = props;
   return (
     <>
-      <h1>Blog:</h1>
+      <h1>About:</h1>
       <p>{path}</p>
     </>
   );

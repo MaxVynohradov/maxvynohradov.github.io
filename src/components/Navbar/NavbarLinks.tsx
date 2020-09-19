@@ -5,7 +5,10 @@ import styled from 'styled-components';
 const NavItem = styled(Link)`
   text-decoration: none;
   color: #111;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   white-space: nowrap;
   margin: 0 1vw;
   height: 3vm;
@@ -33,11 +36,15 @@ const NavItem = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding: 0 0 40px 0;
     font-size: 1.5rem;
     z-index: 6;
+    :after {
+      bottom: 20px;
+    }
   }
 `;
+
 const NavbarLinks: FC<{ setNavbarOpen?: (flag: boolean) => void }> = ({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setNavbarOpen = () => {},

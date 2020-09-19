@@ -6,7 +6,7 @@ import SocialNavbarLinks from './SocialLinks';
 import Logo from './Title';
 
 const Navigation = styled.nav`
-  height: 8vh;
+  height: 11vh;
   display: flex;
   background-color: #fff;
   position: relative;
@@ -14,13 +14,15 @@ const Navigation = styled.nav`
   text-transform: uppercase;
   border-bottom: 2px solid #33333320;
   margin: 0 auto;
-  padding: 0 5vw;
+  padding: 0 10vw;
   z-index: 2;
   align-self: center;
 
   @media (max-width: 768px) {
-    height: 6.5vh;
-    position: sticky;
+    height: 9vh;
+    padding: 0 3vw;
+    position: relative;
+    //position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -35,6 +37,7 @@ const Toggle = styled.div<{ navbarOpen: boolean }>`
 
   @media (max-width: 768px) {
     display: flex;
+    padding: 0 5vw;
     //justify-content: end;
     flex-grow: 1;
   }
@@ -59,6 +62,7 @@ const Navbox = styled.div<{ open?: boolean }>`
     left: ${props => (props.open ? '100%' : '0')};
   }
 `;
+
 const isHamburgerActive = (open?: boolean): string =>
   open ? 'rotate(-90deg) translate(-10px, 0px)' : 'rotate(0deg)';
 

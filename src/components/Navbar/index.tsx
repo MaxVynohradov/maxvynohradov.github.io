@@ -7,6 +7,7 @@ import Logo from './Title';
 
 const Navigation = styled.nav`
   height: 11vh;
+  min-height: 60px;
   display: flex;
   background-color: #fff;
   position: relative;
@@ -14,13 +15,14 @@ const Navigation = styled.nav`
   text-transform: uppercase;
   border-bottom: 2px solid #33333320;
   margin: 0 auto;
-  padding: 0 10vw;
+  padding: 0 15vw;
   z-index: 2;
   align-self: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     height: 9vh;
     padding: 0 3vw;
+    min-height: 70px;
     position: relative;
     //position: sticky;
     top: 0;
@@ -35,7 +37,7 @@ const Toggle = styled.div<{ navbarOpen: boolean }>`
   cursor: pointer;
   padding: 0 10vw;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     display: flex;
     padding: 0 5vw;
     //justify-content: end;
@@ -50,21 +52,20 @@ const Navbox = styled.div<{ open?: boolean }>`
   align-items: center;
   flex-grow: 1;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     flex-direction: column;
     position: fixed;
     width: 100%;
     justify-content: flex-start;
-    padding-top: 10vh;
+    padding-top: 60px;
     background-color: #fff;
     transition: all 0.3s ease-out;
-    top: 8vh;
+    top: 70px;
     left: ${props => (props.open ? '100%' : '0')};
   }
 `;
 
-const isHamburgerActive = (open?: boolean): string =>
-  open ? 'rotate(-90deg) translate(-10px, 0px)' : 'rotate(0deg)';
+const isHamburgerActive = (open?: boolean): string => (open ? 'rotate(-90deg) translate(-10px, 0px)' : 'rotate(0deg)');
 
 const Hamburger = styled.div<{ open?: boolean }>`
   background-color: #111;
@@ -103,10 +104,7 @@ const Navbar = () => {
   return (
     <Navigation>
       <Logo />
-      <Toggle
-        navbarOpen={navbarOpen}
-        onClick={() => setNavbarOpen(!navbarOpen)}
-      >
+      <Toggle navbarOpen={navbarOpen} onClick={() => setNavbarOpen(!navbarOpen)}>
         {navbarOpen ? <Hamburger open /> : <Hamburger />}
       </Toggle>
       {navbarOpen ? (

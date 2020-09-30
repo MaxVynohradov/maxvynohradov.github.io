@@ -1,15 +1,9 @@
-import {
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'gatsby';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const NavSocialItem = styled(Link)`
+const NavSocialItem = styled.a`
   text-decoration: none;
   color: #111;
   display: block;
@@ -26,7 +20,7 @@ const NavSocialItem = styled(Link)`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     padding: 40px 0;
     margin: 0 4vw;
     font-size: 3rem;
@@ -41,7 +35,7 @@ const SocialLinksContainer = styled.div<{ open?: boolean }>`
   justify-self: flex-end;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     margin-top: auto;
     justify-content: center;
     position: fixed;
@@ -52,16 +46,16 @@ const SocialLinksContainer = styled.div<{ open?: boolean }>`
 const SocialNavbarLinks: FC = () => {
   return (
     <SocialLinksContainer>
-      <NavSocialItem to="https://github.com/MaxVynohradov">
+      <NavSocialItem href="https://github.com/MaxVynohradov">
         <FontAwesomeIcon icon={faGithub} />
       </NavSocialItem>
-      <NavSocialItem to="https://www.linkedin.com/in/max-vynohradov/">
+      <NavSocialItem href="https://www.linkedin.com/in/max-vynohradov/">
         <FontAwesomeIcon icon={faLinkedin} />
       </NavSocialItem>
-      <NavSocialItem to="https://twitter.com/max_vynohradov">
+      <NavSocialItem href="https://twitter.com/max_vynohradov">
         <FontAwesomeIcon icon={faTwitter} />
       </NavSocialItem>
-      <NavSocialItem to="https://www.instagram.com/vynohradov.max/">
+      <NavSocialItem href="https://www.instagram.com/vynohradov.max/">
         <FontAwesomeIcon icon={faInstagram} />
       </NavSocialItem>
     </SocialLinksContainer>

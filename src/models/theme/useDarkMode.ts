@@ -16,10 +16,7 @@ export const useDarkMode = (): [THEME_MODES, () => void] => {
   };
 
   const themeToggler = useCallback(
-    (): void =>
-      theme === THEME_MODES.LIGHT
-        ? setMode(THEME_MODES.DARK)
-        : setMode(THEME_MODES.LIGHT),
+    (): void => (theme === THEME_MODES.LIGHT ? setMode(THEME_MODES.DARK) : setMode(THEME_MODES.LIGHT)),
     [theme],
   );
 

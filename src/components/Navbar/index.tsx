@@ -5,7 +5,7 @@ import NavbarLinks from './NavbarLinks';
 import SocialNavbarLinks from './SocialLinks';
 import Logo from './Title';
 
-const Navigation = styled.nav`
+const Navigation = styled.nav<{ navbarOpen: boolean }>`
   height: 11vh;
   min-height: 60px;
   display: flex;
@@ -23,8 +23,7 @@ const Navigation = styled.nav`
     height: 9vh;
     padding: 0 3vw;
     min-height: 70px;
-    position: relative;
-    //position: sticky;
+    position: ${props => (props.navbarOpen ? 'sticky' : 'relative')};
     top: 0;
     left: 0;
     right: 0;
@@ -102,7 +101,7 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
 
   return (
-    <Navigation>
+    <Navigation navbarOpen={navbarOpen}>
       <Logo />
       <Toggle navbarOpen={navbarOpen} onClick={() => setNavbarOpen(!navbarOpen)}>
         {navbarOpen ? <Hamburger open /> : <Hamburger />}

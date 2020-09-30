@@ -19,7 +19,7 @@ export interface PostsListItemProps {
 }
 
 const PostListItemContainer = styled.section`
-  margin: 80px 0;
+  margin: 60px 0;
   @media (max-width: 960px) {
     margin: 25px 0 40px 0;
   }
@@ -27,7 +27,7 @@ const PostListItemContainer = styled.section`
 
 const PostTitle = styled.h1`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 5px;
   right: 5px;
   z-index: 1;
@@ -38,8 +38,8 @@ const PostTitle = styled.h1`
 
 const PostTagsContainer = styled.div`
   margin-bottom: 20px;
+  padding: 0 0 0 5px;
   overflow: hidden;
-  padding: 0;
   font-size: 12px;
 `;
 
@@ -93,6 +93,7 @@ const PostMeta = styled.div`
   line-height: 28px;
   color: #7b5a7b;
   font-weight: 700;
+  padding-left: 5px;
 `;
 
 const PostMetaItem = styled.span`
@@ -103,7 +104,7 @@ const PostMetaItem = styled.span`
 
 const PostTitleLink = styled(Link)`
   color: #000000;
-  text-underline-position: under;
+  text-decoration: none;
   :hover {
     color: #632f83;
   }
@@ -112,9 +113,11 @@ const PostTitleLink = styled(Link)`
 const PostDescription = styled.main`
   line-height: 28px;
   font-size: 20px;
+  padding: 0 5px;
 `;
 
-const ContinueToReadButton = styled(Link)`
+const ContinueToReadLink = styled(Link)`
+  text-decoration: none;
   line-height: 28px;
   font-size: 20px;
 `;
@@ -122,7 +125,7 @@ const ContinueToReadButton = styled(Link)`
 const PostTitleWrapper = styled.div`
   position: relative;
   height: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 `;
 
 const PostImageMask = styled.div`
@@ -175,8 +178,11 @@ export const PostListItem: FC<PostsListItemProps> = (props: PostsListItemProps) 
           ))}
         </PostTagsContainer>
       </header>
-      <PostDescription>{description}</PostDescription>
-      {/* <ContinueToReadButton to={slug}>Continue to read</ContinueToReadButton> */}
+      <PostDescription>
+        {description}
+        &nbsp;
+        <ContinueToReadLink to={slug}>Read more...</ContinueToReadLink>
+      </PostDescription>
     </PostListItemContainer>
   );
 };

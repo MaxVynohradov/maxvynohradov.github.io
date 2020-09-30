@@ -1,8 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: 'Maxim Vynohradov Blog',
+    title: 'Vynohradov Blog',
     description: 'Blog, portfolio, resume',
     author: '@MaxVynohradov',
+    siteUrl: 'https://maxvynohradov.github.io/',
+    social: {
+      twitter: 'https://twitter.com/max_vynohradov',
+      linkedin: 'https://www.linkedin.com/in/max-vynohradov/',
+      instagram: 'https://www.instagram.com/vynohradov.max/',
+    },
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -16,8 +22,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/src/posts`,
+        name: 'blog',
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: 'assets',
       },
     },
     {

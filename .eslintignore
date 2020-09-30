@@ -4,3 +4,5 @@ public
 .prettierrc
 tsconfig.json
 package.json
+
+gatsby-node.js

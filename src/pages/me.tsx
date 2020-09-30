@@ -1,7 +1,7 @@
 import { PageProps } from 'gatsby';
 import React, { FC } from 'react';
 
-const BlogRoute: FC<PageProps> = (props: PageProps) => {
+const ResumeRoute: FC<PageProps> = (props: PageProps) => {
   const { path } = props;
   return (
     <>
@@ -11,4 +11,4 @@ const BlogRoute: FC<PageProps> = (props: PageProps) => {
   );
 };
 
-export default BlogRoute;
+export default ResumeRoute;

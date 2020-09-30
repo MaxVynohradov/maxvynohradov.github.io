@@ -1,13 +1,10 @@
 import { graphql, PageProps } from 'gatsby';
 import React, { FC } from 'react';
 import readingTime from 'reading-time';
-import styled from 'styled-components';
 
 import { PostListItem, PostsListItemProps } from '../components/blog/PostListItem';
 
-const PostList = styled.div<{ coverImg: string }>``;
-
-const BlogRoute: FC<PageProps> = (props: PageProps) => {
+const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   const { data } = props;
   const postList = data.allMdx.edges.map(({ node: { slug, frontmatter, body } }) => ({
     slug,
@@ -18,18 +15,17 @@ const BlogRoute: FC<PageProps> = (props: PageProps) => {
     title: frontmatter.title,
     coverImgSrc: frontmatter.coverImg.childImageSharp.fluid.src,
   }));
-  console.log('postList', postList);
   return (
-    <PostList>
+    <div>
       {postList.map((item: PostsListItemProps) => (
         <PostListItem {...item} />
       ))}
-    </PostList>
+    </div>
   );
 };
 
 export const query = graphql`
-  query MyQuery {
+  query BlogPostQuery {
     allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
       edges {
         node {
@@ -54,4 +50,4 @@ export const query = graphql`
   }
 `;
 
-export default BlogRoute;
+export default BlogPostsList;

@@ -23,13 +23,13 @@ const NavItem = styled(Link)`
     width: 0;
     content: '.';
     color: transparent;
-    background: goldenrod;
+    background: #ab74cd;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: goldenrod;
+    color: #ab74cd;
     ::after {
       width: 100%;
     }

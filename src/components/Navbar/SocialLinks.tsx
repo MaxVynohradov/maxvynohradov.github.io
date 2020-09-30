@@ -14,7 +14,7 @@ const NavSocialItem = styled.a`
   font-size: 2rem;
 
   :hover {
-    color: goldenrod;
+    color: #ab74cd;
     ::after {
       width: 100%;
     }

@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useLocation } from '@reach/router';
 import dayjs from 'dayjs';
 import { Link } from 'gatsby';
 import React, { FC } from 'react';
@@ -120,6 +122,10 @@ const ContinueToReadLink = styled(Link)`
   text-decoration: none;
   line-height: 28px;
   font-size: 20px;
+  color: #632f83;
+  :visited {
+    color: #632f83;
+  }
 `;
 
 const PostTitleWrapper = styled.div`
@@ -153,7 +159,7 @@ const PostImage = styled.img`
 
 export const PostListItem: FC<PostsListItemProps> = (props: PostsListItemProps) => {
   const { slug, title, description, date, tags, coverImgSrc, stats } = props;
-
+  const { pathname } = useLocation();
   return (
     <PostListItemContainer>
       <header>
@@ -161,7 +167,7 @@ export const PostListItem: FC<PostsListItemProps> = (props: PostsListItemProps) 
           <PostImage width="100%" src={coverImgSrc} />
           <PostImageMask />
           <PostTitle>
-            <PostTitleLink to={slug}>{title}</PostTitleLink>
+            <PostTitleLink to={pathname === '/' ? `blog/${slug}` : slug}>{title}</PostTitleLink>
           </PostTitle>
         </PostTitleWrapper>
         <PostMeta>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const TitleWrap = styled.div`
   margin: auto 0;
@@ -10,10 +11,17 @@ const TitleWrap = styled.div`
   }
 `;
 
+const LogoLink = styled(Link)`
+  text-decoration: none;
+  color: #111;
+`;
+
 const Logo = () => {
   return (
     <TitleWrap>
-      <h1>Vynohradov Blog</h1>
+      <LogoLink to="/">
+        <h1>Vynohradov Blog</h1>
+      </LogoLink>
     </TitleWrap>
   );
 };

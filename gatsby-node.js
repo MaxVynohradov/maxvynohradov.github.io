@@ -5,6 +5,16 @@ const readingTime = require('reading-time');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const BlogPostComponent = path.resolve(`./src/templates/BlogPostsList.tsx`);
+  createPage({
+    path: `blog`,
+    component: BlogPostComponent,
+  })
+  createPage({
+    path: `/`,
+    component: BlogPostComponent,
+  })
+
   const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
   const result = await graphql(`
       {

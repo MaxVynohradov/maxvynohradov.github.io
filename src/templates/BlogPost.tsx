@@ -2,12 +2,14 @@ import { PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { FC } from 'react';
 
+import { PostListItem } from '../components/blog/PostListItem';
+
 interface FrontmatterData {
   title: string;
   description: string;
-  date: string;
+  date: Date;
   coverImgSrc: string;
-  tags: string;
+  tags: string[];
 }
 
 interface PageContext {
@@ -25,27 +27,37 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
   // eslint-disable-next-line @typescript-eslint/ban-types
   props: PageProps<unknown, PageContext>,
 ) => {
-  console.log(props);
   const {
     pageContext: {
       body: data,
-      stats: { text, words },
+      stats,
       frontmatterData: { tags, date, title, coverImgSrc },
     },
   } = props;
   return (
-    <>
-      <h1>{title}</h1>
-      <h3>{date}</h3>
-      <h3>{tags}</h3>
-      <h4>{text}</h4>
-      <h4>{words} words</h4>
-      <img src={coverImgSrc} alt="cover" style={{ objectFit: 'cover', display: 'block', width: '100%' }} />
-      <MDXRenderer title="My Stuff!">{data}</MDXRenderer>
-    </>
+    <div>
+      <PostListItem
+        title={title}
+        slug="/blog"
+        coverImgSrc={coverImgSrc}
+        date={date}
+        tags={tags}
+        stats={stats}
+        description={data.substr(1, 19000)}
+      />
+    </div>
   );
 };
 
+// <>
+//   <h1>{title}</h1>
+//   <h3>{date}</h3>
+//   <h3>{tags}</h3>
+//   <h4>{text}</h4>
+//   <h4>{words} words</h4>
+//   <img src={coverImgSrc} alt="cover" style={{ objectFit: 'cover', display: 'block', width: '100%' }} />
+//   <MDXRenderer title="My Stuff!">{data}</MDXRenderer>
+// </>
 export default BlogPost;
 
 // import { MDXProvider } from '@mdx-js/react';

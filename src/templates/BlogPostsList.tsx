@@ -2,7 +2,8 @@ import { graphql, PageProps } from 'gatsby';
 import React, { FC } from 'react';
 import readingTime from 'reading-time';
 
-import { PostListItem, PostsListItemProps } from '../components/blog/PostListItem';
+import { PostItemProps } from '../components/blog/interfaces/PostItemProps';
+import { PostListItem } from '../components/blog/PostListItem';
 
 const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   const { data } = props;
@@ -17,7 +18,7 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   }));
   return (
     <div>
-      {postList.map((item: PostsListItemProps) => (
+      {postList.map((item: PostItemProps) => (
         <PostListItem {...item} />
       ))}
     </div>

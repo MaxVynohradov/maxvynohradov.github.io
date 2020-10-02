@@ -1,8 +1,19 @@
+import { MDXProvider } from '@mdx-js/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useLocation } from '@reach/router';
 import { PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { FC } from 'react';
 
-import { PostListItem } from '../components/blog/PostListItem';
+import { mdxProviderComponentsList } from '../components/blog/mdxComponents';
+import {
+  PostHeaderImage,
+  PostMeta,
+  PostSectionContainer,
+  PostTagList,
+  PostTitle,
+  PostTitleWrapper,
+} from '../components/blog/post';
 
 interface FrontmatterData {
   title: string;
@@ -29,57 +40,27 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
 ) => {
   const {
     pageContext: {
-      body: data,
+      body: mainText,
       stats,
       frontmatterData: { tags, date, title, coverImgSrc },
     },
   } = props;
+  const { pathname: postLink } = useLocation();
   return (
-    <div>
-      <PostListItem
-        title={title}
-        slug="/blog"
-        coverImgSrc={coverImgSrc}
-        date={date}
-        tags={tags}
-        stats={stats}
-        description={data.substr(1, 19000)}
-      />
-    </div>
+    <PostSectionContainer>
+      <header>
+        <PostTitleWrapper>
+          <PostHeaderImage coverImgSrc={coverImgSrc} />
+          <PostTitle postLink={postLink} title={title} />
+        </PostTitleWrapper>
+        <PostMeta date={date} timeToRead={stats.text} wordsCount={stats.words} />
+        <PostTagList tags={tags} />
+      </header>
+      <MDXProvider components={mdxProviderComponentsList}>
+        <MDXRenderer>{mainText}</MDXRenderer>
+      </MDXProvider>
+    </PostSectionContainer>
   );
 };
 
-// <>
-//   <h1>{title}</h1>
-//   <h3>{date}</h3>
-//   <h3>{tags}</h3>
-//   <h4>{text}</h4>
-//   <h4>{words} words</h4>
-//   <img src={coverImgSrc} alt="cover" style={{ objectFit: 'cover', display: 'block', width: '100%' }} />
-//   <MDXRenderer title="My Stuff!">{data}</MDXRenderer>
-// </>
 export default BlogPost;
-
-// import { MDXProvider } from '@mdx-js/react';
-// import { PageProps } from 'gatsby';
-// import React, { FC } from 'react';
-// import { MDXRenderer } from "gatsby-plugin-mdx";
-
-// const BlogPost: FC<PageProps> = (props: PageProps) => {
-//   console.log(props);
-//   const { path } = props;
-//   const node = props.data;
-//
-//   return (
-//           <MDXProvider>
-//             <MDXRenderer>{node.code.body}</MDXRenderer>
-//           </MDXProvider>
-//
-//   <MDXRenderer>
-//     <h1>Test Blog Post:</h1>
-//     <p>{path}</p>
-//   </MDXRenderer>
-// );
-// };
-//
-// export default BlogPost;

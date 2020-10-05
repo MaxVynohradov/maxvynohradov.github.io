@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
   body:active, html:active {
      transition: background-color 300ms linear;
   }
+  #gatsby-focus-wrapper {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const App: FC = ({ children }) => {

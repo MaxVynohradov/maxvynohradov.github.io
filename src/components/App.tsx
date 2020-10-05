@@ -3,6 +3,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { THEME_MODES, ThemeContext, useDarkMode } from '../models/theme';
 import { DarkTheme, LightTheme } from '../themes';
+import { FooterContainer } from './Footer';
 import { MainContainer } from './MainContainer';
 import Navbar from './Navbar';
 
@@ -40,6 +41,7 @@ export const App: FC = ({ children }) => {
         <GlobalStyle theme={theme} />
         <Navbar />
         <MainContainer>{children}</MainContainer>
+        <FooterContainer />
       </ThemeProvider>
     </ThemeContext.Provider>
   );

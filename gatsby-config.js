@@ -71,12 +71,12 @@ module.exports = {
       options: {
         name: 'gatsby-starter-default',
         short_name: 'starter',
-        start_url: '/',
+        start_url: '/blog',
         background_color: '#663399',
         theme_color: '#663399',
         // display: 'minimal-ui',
         display: 'standalone',
-        icon: 'src/images/logo-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/logo-icon-new.png',
       },
     },
     'gatsby-plugin-offline',

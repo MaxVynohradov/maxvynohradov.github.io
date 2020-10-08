@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { useLocation } from '@reach/router';
 import { PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import GitalkComponent from 'gitalk/dist/gitalk-component';
+import Gitalk from 'gitalk';
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -56,6 +56,21 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
     },
   } = props;
 
+  useEffect(() => {
+    const gitalk = new Gitalk({
+      clientID: '3b8027c92519ebad96c3',
+      clientSecret: '1551425adf40f00f29f3f5646049f5c86b43da14',
+      repo: 'maxvynohradov.github.io',
+      owner: 'MaxVynohradov',
+      admin: ['MaxVynohradov'],
+      id: slug,
+      title: `Comments on '${title}'`,
+      body: `This issue exists to host comments for ${siteUrl}${slug}`,
+      distractionFreeMode: false,
+    });
+    gitalk.render('gitalk');
+  }, [title, slug, siteUrl]);
+
   const { pathname: postLink } = useLocation();
   return (
     <PostSectionContainer>
@@ -77,19 +92,6 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
       <CommentsSection>
         <h2>Comments</h2>
         <div id="gitalk" />
-        <GitalkComponent
-          options={{
-            clientID: '3b8027c92519ebad96c3',
-            clientSecret: '1551425adf40f00f29f3f5646049f5c86b43da14',
-            repo: 'maxvynohradov.github.io',
-            owner: 'MaxVynohradov',
-            admin: ['MaxVynohradov'],
-            id: slug,
-            title: `Comments on '${title}'`,
-            body: `This issue exists to host comments for ${siteUrl}${slug}`,
-            distractionFreeMode: false,
-          }}
-        />
       </CommentsSection>
     </PostSectionContainer>
   );

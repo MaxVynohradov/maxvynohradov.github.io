@@ -1,4 +1,4 @@
-import 'gitalk/dist/gitalk.css';
+import './src/themes/gittalk.css';
 
 import React from 'react';
 

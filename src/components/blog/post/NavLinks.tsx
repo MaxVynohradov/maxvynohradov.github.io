@@ -6,6 +6,8 @@ import { FrontmatterData } from '../interfaces/FrontmatterData';
 
 export const NavLinksContainer = styled.h1`
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const NavLink = styled(Link)<{ before: string; after: string }>`
@@ -13,7 +15,7 @@ const NavLink = styled(Link)<{ before: string; after: string }>`
   font-size: 20px;
   font-style: italic;
   text-align: center;
-  width: 50%;
+  width: 45%;
   color: #000000;
   cursor: pointer;
   text-decoration: none;

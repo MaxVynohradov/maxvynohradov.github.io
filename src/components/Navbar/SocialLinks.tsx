@@ -37,6 +37,7 @@ const SocialLinksContainer = styled.div<{ open?: boolean }>`
   padding-right: 15vh;
 
   @media (max-width: 960px) {
+    padding-right: 0;
     margin-top: auto;
     justify-content: center;
     position: fixed;

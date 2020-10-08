@@ -7,8 +7,13 @@ const TitleWrap = styled.div`
   padding-left: 15vh;
   flex: 0 1 36px;
 
+  @media (max-width: 960px) {
+    padding-left: 0;
+  }
+
   @media (max-width: 960px) and (orientation: landscape) {
     flex: 0 1 25px;
+    padding-left: 0;
   }
 `;
 

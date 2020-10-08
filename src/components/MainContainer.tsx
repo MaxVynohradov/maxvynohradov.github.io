@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const MainBlock = styled.main`
+  flex: 1;
   display: flex;
   background-color: #fff;
   position: relative;

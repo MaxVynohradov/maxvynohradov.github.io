@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
+import { ScrollButton } from './ScrollButton';
+
 const MainBlock = styled.main`
   flex: 1;
   display: flex;
@@ -16,5 +18,10 @@ const MainBlock = styled.main`
 `;
 
 export const MainContainer: FC = ({ children }) => {
-  return <MainBlock>{children}</MainBlock>;
+  return (
+    <MainBlock>
+      {children}
+      <ScrollButton />
+    </MainBlock>
+  );
 };

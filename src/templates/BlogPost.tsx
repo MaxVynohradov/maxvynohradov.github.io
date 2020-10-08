@@ -5,8 +5,10 @@ import { PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { FC } from 'react';
 
+import { FrontmatterData } from '../components/blog/interfaces/FrontmatterData';
 import { mdxProviderComponentsList } from '../components/blog/mdxComponents';
 import {
+  NavLinks,
   PostHeaderImage,
   PostMeta,
   PostSectionContainer,
@@ -15,23 +17,18 @@ import {
   PostTitleWrapper,
 } from '../components/blog/post';
 
-interface FrontmatterData {
-  title: string;
-  description: string;
-  date: Date;
-  coverImgSrc: string;
-  tags: string[];
-}
-
 interface PageContext {
+  slug: string;
   body: string;
+  previous: PageContext;
+  next: PageContext;
   stats: {
     text: string;
     minutes: number;
     time: number;
     words: number;
   };
-  frontmatterData: FrontmatterData;
+  frontmatter: FrontmatterData;
 }
 
 const BlogPost: FC<PageProps<unknown, PageContext>> = (
@@ -41,10 +38,13 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
   const {
     pageContext: {
       body: mainText,
+      previous,
+      next,
       stats,
-      frontmatterData: { tags, date, title, coverImgSrc },
+      frontmatter: { tags, date, title, coverImgSrc },
     },
   } = props;
+  console.log('previous, next, frontmatterData', previous, next);
   const { pathname: postLink } = useLocation();
   return (
     <PostSectionContainer>
@@ -59,6 +59,10 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
       <MDXProvider components={mdxProviderComponentsList}>
         <MDXRenderer>{mainText}</MDXRenderer>
       </MDXProvider>
+      <NavLinks
+        previous={{ slug: previous?.slug, frontmatter: previous?.frontmatter }}
+        next={{ slug: next?.slug, frontmatter: next?.frontmatter }}
+      />
     </PostSectionContainer>
   );
 };

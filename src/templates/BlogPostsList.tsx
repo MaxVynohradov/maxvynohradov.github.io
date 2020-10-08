@@ -9,7 +9,7 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   const { data } = props;
   const postList = data.allMdx.edges.map(({ node: { slug, frontmatter, body } }) => ({
     slug,
-    stats: readingTime(body),
+    stats: readingTime(body, { wordsPerMinute: 360 }),
     date: frontmatter.date,
     description: frontmatter.description,
     tags: frontmatter.tags,
@@ -18,8 +18,8 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   }));
   return (
     <div>
-      {postList.map((item: PostItemProps) => (
-        <PostListItem {...item} />
+      {postList.map((item: PostItemProps, idx) => (
+        <PostListItem key={idx.toString()} {...item} />
       ))}
     </div>
   );

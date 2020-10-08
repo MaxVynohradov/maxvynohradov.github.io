@@ -5,3 +5,4 @@ export * from './PostMeta';
 export * from './PostDescription';
 export * from './PostHeaderImage';
 export * from './PostTitleWrapper';
+export * from './NavLinks';

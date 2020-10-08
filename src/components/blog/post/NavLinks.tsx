@@ -8,8 +8,10 @@ export const NavLinksContainer = styled.h1`
   display: flex;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link)<{ before: string; after: string }>`
   display: flex;
+  font-size: 20px;
+  font-style: italic;
   text-align: center;
   width: 50%;
   color: #000000;
@@ -17,6 +19,12 @@ const NavLink = styled(Link)`
   text-decoration: none;
   :hover {
     color: #632f83;
+  }
+  ::before {
+    content: ${props => props.before};
+  }
+  ::after {
+    content: ${props => props.after};
   }
 `;
 
@@ -35,9 +43,16 @@ export const NavLinks: FC<NavLinksProps> = ({ previous, next }: NavLinksProps) =
   console.log('previous', previous);
   return (
     <NavLinksContainer>
-      <i className="fas fa-arrow-left"></i>
-      {previous?.slug ? <NavLink to={`/blog/${previous?.slug}`}>{previous?.frontmatter.title}</NavLink> : null}
-      {next?.slug ? <NavLink to={`/blog/${next?.slug}`}>{next.frontmatter?.title}</NavLink> : null}
+      {previous?.slug ? (
+        <NavLink to={`/blog/${previous?.slug}`} before="'❮'" after="">
+          {previous?.frontmatter.title}
+        </NavLink>
+      ) : null}
+      {next?.slug ? (
+        <NavLink to={`/blog/${next?.slug}`} before="" after="'❯'">
+          {next.frontmatter?.title}
+        </NavLink>
+      ) : null}
     </NavLinksContainer>
   );
 };

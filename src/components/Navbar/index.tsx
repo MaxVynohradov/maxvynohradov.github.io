@@ -15,7 +15,8 @@ const Navigation = styled.nav<{ navbarOpen: boolean }>`
   text-transform: uppercase;
   border-bottom: 2px solid #33333320;
   margin: 0 auto;
-  padding: 0 15vw;
+  padding: 0;
+  width: 100%;
   z-index: 2;
   align-self: center;
 

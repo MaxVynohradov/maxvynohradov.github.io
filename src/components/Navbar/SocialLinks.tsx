@@ -34,6 +34,7 @@ const SocialLinksContainer = styled.div<{ open?: boolean }>`
   height: 100%;
   justify-self: flex-end;
   align-items: center;
+  padding-right: 15vh;
 
   @media (max-width: 960px) {
     margin-top: auto;

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 import { THEME_MODES, ThemeContext, useDarkMode } from '../models/theme';
 import { DarkTheme, LightTheme } from '../themes';
@@ -32,6 +33,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const GlobalContainer = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+`;
+
 export const App: FC = ({ children }) => {
   const [themeMode, toggleTheme] = useDarkMode();
   const theme = themeMode === THEME_MODES.LIGHT ? LightTheme : DarkTheme;
@@ -39,9 +48,11 @@ export const App: FC = ({ children }) => {
     <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
       <ThemeProvider theme={theme}>
         <GlobalStyle theme={theme} />
-        <Navbar />
-        <MainContainer>{children}</MainContainer>
-        <FooterContainer />
+        <GlobalContainer>
+          <Navbar />
+          <MainContainer>{children}</MainContainer>
+          <FooterContainer />
+        </GlobalContainer>
       </ThemeProvider>
     </ThemeContext.Provider>
   );

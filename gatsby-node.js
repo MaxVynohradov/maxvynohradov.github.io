@@ -18,6 +18,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
   const result = await graphql(`
       {
+        site {
+          siteMetadata {
+            title
+          }
+        }
         allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
@@ -55,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMdx.edges
-
+  const siteMetadata = result.data.site.siteMetadata;
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
@@ -65,6 +70,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `blog/${slug}`,
       component: blogPost,
       context: {
+        siteMetadata,
         slug,
         body,
         frontmatter: { title, description, date, coverImgSrc: coverImg.childImageSharp.fluid.src, tags },

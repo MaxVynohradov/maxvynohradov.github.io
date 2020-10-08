@@ -1,3 +1,5 @@
+import 'gitalk/dist/gitalk.css';
+
 import React from 'react';
 
 import { App } from './src/components';

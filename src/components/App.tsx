@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import styled from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { THEME_MODES, ThemeContext, useDarkMode } from '../models/theme';
 import { DarkTheme, LightTheme } from '../themes';

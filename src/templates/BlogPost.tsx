@@ -3,7 +3,9 @@ import { MDXProvider } from '@mdx-js/react';
 import { useLocation } from '@reach/router';
 import { PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import React, { FC } from 'react';
+import GitalkComponent from 'gitalk/dist/gitalk-component';
+import React, { FC, useEffect } from 'react';
+import styled from 'styled-components';
 
 import { FrontmatterData } from '../components/blog/interfaces/FrontmatterData';
 import { mdxProviderComponentsList } from '../components/blog/mdxComponents';
@@ -18,6 +20,9 @@ import {
 } from '../components/blog/post';
 
 interface PageContext {
+  siteMetadata: {
+    siteUrl: string;
+  };
   slug: string;
   body: string;
   previous: PageContext;
@@ -31,20 +36,26 @@ interface PageContext {
   frontmatter: FrontmatterData;
 }
 
+const CommentsSection = styled.section`
+  padding: 25px 15px;
+`;
+
 const BlogPost: FC<PageProps<unknown, PageContext>> = (
   // eslint-disable-next-line @typescript-eslint/ban-types
   props: PageProps<unknown, PageContext>,
 ) => {
   const {
     pageContext: {
+      siteMetadata: { siteUrl },
       body: mainText,
+      slug,
       previous,
       next,
       stats,
       frontmatter: { tags, date, title, coverImgSrc },
     },
   } = props;
-  console.log('previous, next, frontmatterData', previous, next);
+
   const { pathname: postLink } = useLocation();
   return (
     <PostSectionContainer>
@@ -63,6 +74,23 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
         previous={{ slug: previous?.slug, frontmatter: previous?.frontmatter }}
         next={{ slug: next?.slug, frontmatter: next?.frontmatter }}
       />
+      <CommentsSection>
+        <h2>Comments</h2>
+        <div id="gitalk" />
+        <GitalkComponent
+          options={{
+            clientID: '3b8027c92519ebad96c3',
+            clientSecret: '1551425adf40f00f29f3f5646049f5c86b43da14',
+            repo: 'maxvynohradov.github.io',
+            owner: 'MaxVynohradov',
+            admin: ['MaxVynohradov'],
+            id: slug,
+            title: `Comments on '${title}'`,
+            body: `This issue exists to host comments for ${siteUrl}${slug}`,
+            distractionFreeMode: false,
+          }}
+        />
+      </CommentsSection>
     </PostSectionContainer>
   );
 };

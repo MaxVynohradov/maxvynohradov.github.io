@@ -22,7 +22,8 @@ const Navigation = styled.nav<{ navbarOpen: boolean }>`
 
   @media (max-width: 960px) {
     height: 9vh;
-    padding: 0 3vw;
+    padding: 0;
+    width: 100%;
     min-height: 70px;
     position: ${props => (props.navbarOpen ? 'sticky' : 'relative')};
     top: 0;

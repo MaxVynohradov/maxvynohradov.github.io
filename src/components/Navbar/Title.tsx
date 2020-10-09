@@ -8,12 +8,12 @@ const TitleWrap = styled.div`
   flex: 0 1 36px;
 
   @media (max-width: 960px) {
-    padding-left: 0;
+    padding-left: 3vh;
   }
 
   @media (max-width: 960px) and (orientation: landscape) {
     flex: 0 1 25px;
-    padding-left: 0;
+    padding-left: 15vh;
   }
 `;
 

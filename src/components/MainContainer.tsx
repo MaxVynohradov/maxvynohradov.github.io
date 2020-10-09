@@ -9,6 +9,9 @@ const MainBlock = styled.main`
   background-color: #fff;
   position: relative;
   padding: 0 30vw;
+  @media (max-width: 1450px) {
+    padding: 0 23vw;
+  }
   @media (max-width: 960px) and (orientation: landscape) {
     padding: 0 10vw;
   }

@@ -5,8 +5,8 @@ export const LightTheme: DefaultTheme = {
     radius: '20px',
   },
   fonts: {
-    main: 'Quicksand, sans-serif',
-    code: 'Roboto Mono, monospace',
+    main: 'Manrope, sans-serif',
+    code: 'monospace',
   },
   colors: {
     main: {

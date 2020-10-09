@@ -6,6 +6,7 @@ const DescriptionContainer = styled.main`
   line-height: 28px;
   font-size: 21px;
   padding: 0 5px;
+  font-weight: 400;
 `;
 
 const ContinueToReadLink = styled(Link)`

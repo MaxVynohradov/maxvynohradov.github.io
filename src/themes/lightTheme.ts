@@ -10,7 +10,7 @@ export const LightTheme: DefaultTheme = {
   },
   colors: {
     main: {
-      body: 'white',
+      body: '#BFBFBF',
       text: 'black',
       toggleBorder: '#6B8096',
       background: 'white',

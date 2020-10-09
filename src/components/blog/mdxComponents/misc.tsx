@@ -28,11 +28,18 @@ export const MdxLink = styled.a`
 `;
 
 export const MdxParagraph = styled.p`
-  color: #0f0217;
+  color: #292929;
   display: block;
-  line-height: 28px;
-  font-size: 20px;
+  letter-spacing: -0.003em;
+  line-height: 32px;
+  margin-top: 2em;
+  font-size: 21px;
+  font-weight: 400;
+  word-break: break-word;
+  //line-height: 28px;
+  //font-size: 21px;
   padding: 0 5px;
+  margin-bottom: -0.46em;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0;

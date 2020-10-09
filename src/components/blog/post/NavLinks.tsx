@@ -12,7 +12,7 @@ export const NavLinksContainer = styled.h1`
 
 const NavLink = styled(Link)<{ before: string; after: string }>`
   display: flex;
-  font-size: 20px;
+  font-size: 21px;
   font-style: italic;
   text-align: center;
   width: 45%;

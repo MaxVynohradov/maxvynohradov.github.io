@@ -23,8 +23,8 @@ export const MdxOrderedList = styled.ol`
 `;
 
 export const MdxListItem = styled.li`
-  color: #0f0217;
+  color: #292929;
   line-height: 28px;
-  font-size: 20px;
+  font-size: 21px;
   padding: 0 5px;
 `;

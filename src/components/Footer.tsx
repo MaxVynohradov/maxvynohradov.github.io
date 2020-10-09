@@ -15,7 +15,7 @@ const FooterText = styled.p`
   color: rgb(89, 1, 137);
   display: block;
   line-height: 28px;
-  font-size: 20px;
+  font-size: 21px;
   padding: 0 5px;
 `;
 

@@ -6,3 +6,4 @@ export * from './PostDescription';
 export * from './PostHeaderImage';
 export * from './PostTitleWrapper';
 export * from './NavLinks';
+export * from './Share';

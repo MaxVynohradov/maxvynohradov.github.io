@@ -21,6 +21,10 @@ exports.createPages = async ({ graphql, actions }) => {
         site {
           siteMetadata {
             title
+            siteUrl
+            social {
+              twitterHandle
+            }
           }
         }
         allMdx(

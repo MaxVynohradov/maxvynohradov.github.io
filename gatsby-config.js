@@ -7,6 +7,7 @@ module.exports = {
     author: '@MaxVynohradov',
     siteUrl: 'https://maxvynohradov.github.io/',
     social: {
+      twitterHandle: '@max_vynohradov',
       twitter: 'https://twitter.com/max_vynohradov',
       linkedin: 'https://www.linkedin.com/in/max-vynohradov/',
       instagram: 'https://www.instagram.com/vynohradov.max/',

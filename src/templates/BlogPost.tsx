@@ -17,11 +17,15 @@ import {
   PostTagList,
   PostTitle,
   PostTitleWrapper,
+  ShareSocialBlock,
 } from '../components/blog/post';
 
 interface PageContext {
   siteMetadata: {
     siteUrl: string;
+    social: {
+      twitterHandle: string;
+    };
   };
   slug: string;
   body: string;
@@ -36,8 +40,15 @@ interface PageContext {
   frontmatter: FrontmatterData;
 }
 
-const CommentsSection = styled.section`
+const ShareLinksSection = styled.section`
   padding: 25px 15px;
+  @media (max-width: 960px) {
+    text-align: center;
+  }
+`;
+
+const CommentsSection = styled.section`
+  padding: 0 15px 25px 15px;
 `;
 
 const BlogPost: FC<PageProps<unknown, PageContext>> = (
@@ -46,7 +57,10 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
 ) => {
   const {
     pageContext: {
-      siteMetadata: { siteUrl },
+      siteMetadata: {
+        siteUrl,
+        social: { twitterHandle },
+      },
       body: mainText,
       slug,
       previous,
@@ -82,17 +96,33 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
         <PostMeta date={date} timeToRead={stats.text} wordsCount={stats.words} />
         <PostTagList tags={tags} />
       </header>
-      <MDXProvider components={mdxProviderComponentsList}>
-        <MDXRenderer>{mainText}</MDXRenderer>
-      </MDXProvider>
-      <NavLinks
-        previous={{ slug: previous?.slug, frontmatter: previous?.frontmatter }}
-        next={{ slug: next?.slug, frontmatter: next?.frontmatter }}
-      />
-      <CommentsSection>
-        <h2>Comments</h2>
-        <div id="gitalk" />
-      </CommentsSection>
+      <main>
+        <MDXProvider components={mdxProviderComponentsList}>
+          <MDXRenderer>{mainText}</MDXRenderer>
+        </MDXProvider>
+        <NavLinks
+          previous={{ slug: previous?.slug, frontmatter: previous?.frontmatter }}
+          next={{ slug: next?.slug, frontmatter: next?.frontmatter }}
+        />
+      </main>
+      <footer>
+        <ShareLinksSection>
+          <ShareSocialBlock
+            socialConfig={{
+              twitterHandle,
+              config: {
+                url: `${siteUrl}/blog/${slug}`,
+                title,
+              },
+            }}
+            tags={tags}
+          />
+        </ShareLinksSection>
+        <CommentsSection>
+          <h2>Comments</h2>
+          <div id="gitalk" />
+        </CommentsSection>
+      </footer>
     </PostSectionContainer>
   );
 };

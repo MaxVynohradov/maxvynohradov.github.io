@@ -1,4 +1,5 @@
 const emoji = require('remark-emoji');
+require('dotenv').config({ path: '.env' });
 
 module.exports = {
   siteMetadata: {
@@ -88,6 +89,12 @@ module.exports = {
     'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-styled-components',
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
+      },
     },
   ],
 };

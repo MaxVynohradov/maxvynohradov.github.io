@@ -107,7 +107,7 @@ export const ResumeParagraph = styled.div`
 `;
 
 export const ResumeJobParagraph = styled.div<{ collapsed: boolean }>`
-  max-height: ${props => (props.collapsed ? 0 : '100%')};
+  max-height: ${props => (props.collapsed ? 0 : 'none')};
   visibility: ${props => (props.collapsed ? 'hidden' : 'visible')};
   opacity: ${props => (props.collapsed ? '0' : '1')};
   line-height: 1.4em;
@@ -116,7 +116,7 @@ export const ResumeJobParagraph = styled.div<{ collapsed: boolean }>`
   margin-bottom: 10px;
 
   @media print {
-    max-height: 100%;
+    max-height: none;
     visibility: visible;
     opacity: 1;
   }

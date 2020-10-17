@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
   @page {
     size: auto;
-    margin: 10mm 20mm 10mm 10mm;
+    margin: 10mm 10mm 10mm 20mm;
   }
 `;
 

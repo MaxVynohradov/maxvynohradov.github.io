@@ -294,20 +294,14 @@ const ResumeRoute: FC = () => {
         <ResumeSectionTitle>Education</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeArticle>
-            <ResumeArticleSubtitle>College/University</ResumeArticleSubtitle>
-            <ResumeSubDetails>Qualification</ResumeSubDetails>
-            <ResumeParagraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit.
-              Curabitur non consequat enim.
-            </ResumeParagraph>
+            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+            <ResumeWorkDate>2018 - 2019</ResumeWorkDate>
+            <ResumeParagraph>Master's degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
           <ResumeArticle>
-            <ResumeArticleSubtitle>College/University</ResumeArticleSubtitle>
-            <ResumeSubDetails>Qualification</ResumeSubDetails>
-            <ResumeParagraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit.
-              Curabitur non consequat enim.
-            </ResumeParagraph>
+            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+            <ResumeWorkDate>2014 - 2018</ResumeWorkDate>
+            <ResumeParagraph>Bachelor's degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
         </ResumeSectionContent>
       </ResumeSections>

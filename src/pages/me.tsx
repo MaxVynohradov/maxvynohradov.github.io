@@ -1,9 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import styled from 'styled-components';
 
 export const ResumeMain = styled.main`
   margin: 20px 0 45px 0;
   font-size: 1.1em;
+  @media print {
+    background-color: white;
+    font-size: 18px;
+  }
 `;
 
 export const ResumeSections = styled.section`
@@ -11,7 +16,7 @@ export const ResumeSections = styled.section`
   border-bottom: 1px solid #dedede;
   padding: 25px 0 5px 0;
 
-  @media (max-width: 960px) {
+  @media screen and (max-width: 960px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -23,7 +28,7 @@ export const ResumeSectionTitle = styled.h1`
   padding-right: 15px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 
-  @media (max-width: 960px) {
+  @media screen and (max-width: 960px) {
     width: 100%;
     padding-bottom: 15px;
   }
@@ -96,7 +101,7 @@ export const WorkTechnologiesHeader = styled.span`
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 `;
 
-export const ResumeParagraph = styled.p`
+export const ResumeParagraph = styled.div`
   line-height: 1.4em;
   margin-bottom: 20px;
   color: #444;
@@ -118,9 +123,52 @@ export const ResumeSkills = styled.ul`
   color: #444;
 `;
 
+export const PrintButton = styled.button`
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+  @media screen and (min-width: 960px) {
+    display: inline-flex;
+    position: fixed;
+    right: 100px;
+    bottom: 25px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 0.4rem 0.8rem;
+    border-width: 1px;
+    border-radius: 290486px;
+    text-align: center;
+    white-space: nowrap;
+    color: black;
+    border-color: black;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    opacity: 0.4;
+    transition: opacity 200ms ease-in;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  @media print {
+    display: none;
+  }
+`;
+
 const ResumeRoute: FC = () => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
-    <ResumeMain>
+    <ResumeMain ref={componentRef}>
+      <PrintButton onClick={handlePrint}>Print resume</PrintButton>
       <ResumeSections>
         <ResumeSectionTitle>Personal Profile</ResumeSectionTitle>
         <ResumeSectionContent>

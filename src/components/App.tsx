@@ -30,6 +30,17 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  @media print {
+    html, body {
+      height: initial !important;
+      overflow: initial !important;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+  @page {
+    size: auto;
+    margin: 0 10mm 10mm 10mm;
+  }
 `;
 
 const GlobalContainer = styled.div`

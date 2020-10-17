@@ -30,6 +30,10 @@ const Navigation = styled.nav<{ navbarOpen: boolean }>`
     left: 0;
     right: 0;
   }
+
+  @media print {
+    display: none;
+  }
 `;
 
 const Toggle = styled.div<{ navbarOpen: boolean }>`

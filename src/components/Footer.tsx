@@ -9,6 +9,10 @@ const FooterBlock = styled.footer`
   justify-content: center;
   align-items: center;
   border-top: 2px solid rgb(89, 1, 137);
+
+  @media print {
+    display: none;
+  }
 `;
 
 const FooterText = styled.p`

@@ -1,222 +1,26 @@
-import React, { FC, useCallback, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import styled from 'styled-components';
 
-export const ResumeMain = styled.main`
-  margin: 20px 0 45px 0;
-  font-size: 1.1em;
-  @media print {
-    background-color: white;
-    font-size: 18px;
-  }
-`;
-
-export const ResumeSections = styled.section`
-  display: flex;
-  border-bottom: 1px solid #dedede;
-  padding: 25px 0 5px 0;
-
-  @media screen and (max-width: 960px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-`;
-
-export const ResumeSectionTitle = styled.h1`
-  font-size: 23px;
-  width: 20%;
-  padding-right: 15px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    padding-bottom: 15px;
-  }
-`;
-
-export const ResumeSectionContent = styled.div`
-  width: 79%;
-
-  @media (max-width: 960px) {
-    width: 100%;
-  }
-`;
-
-export const ResumeArticle = styled.article`
-  display: block;
-`;
-
-export const ResumeArticleSubtitle = styled.h2`
-  font-size: 20px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 8px;
-  margin-top: 3px;
-`;
-
-export const ResumeJobPlace = styled.a`
-  display: block;
-  font-size: 16px;
-  font-style: italic;
-  color: black;
-  margin-bottom: 5px;
-`;
-
-export const ResumeJobDate = styled.p`
-  font-size: 16px;
-  margin-bottom: 5px;
-`;
-
-export const JobDutiesList = styled.ul`
-  display: block;
-  list-style-type: square;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-inline-start: 30px;
-  overflow-wrap: break-word;
-`;
-
-export const JobDutiesLI = styled.li`
-  color: #292929;
-  line-height: 28px;
-  padding: 0 5px;
-`;
-
-export const JobDomain = styled.p`
-  line-height: 28px;
-  padding: 0 5px;
-`;
-
-export const JobDomainName = styled.span`
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-`;
-
-export const JobTechnologies = styled.p`
-  line-height: 28px;
-  padding: 0 5px;
-`;
-
-export const JobTechnologiesHeader = styled.span`
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-`;
-
-export const ResumeParagraph = styled.div`
-  line-height: 1.4em;
-  margin-bottom: 20px;
-  color: #444;
-`;
-
-export const ResumeJobParagraph = styled.div<{ collapsed: boolean }>`
-  max-height: ${props => (props.collapsed ? 0 : 'auto')};
-  visibility: ${props => (props.collapsed ? 'hidden' : 'visible')};
-  opacity: ${props => (props.collapsed ? '0' : '1')};
-  line-height: 1.4em;
-  color: #444;
-  transition: opacity 1s ease-out, max-height 1s linear;
-  margin-bottom: 10px;
-`;
-
-export const ResumeSubDetails = styled.p`
-  font-size: 0.8em;
-  font-style: italic;
-  margin-bottom: 3px;
-`;
-
-export const ResumeSkills = styled.ul`
-  list-style-type: none;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
-  column-count: 3;
-  margin-bottom: 20px;
-  font-size: 1em;
-  color: #444;
-`;
-
-export const PrintButton = styled.button`
-  @media screen and (max-width: 960px) {
-    display: none;
-  }
-  @media screen and (min-width: 960px) {
-    display: inline-flex;
-    position: fixed;
-    right: 100px;
-    bottom: 25px;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: flex-start;
-    box-sizing: border-box;
-    padding: 0.4rem 0.8rem;
-    border-width: 1px;
-    border-radius: 290486px;
-    text-align: center;
-    white-space: nowrap;
-    color: black;
-    border-color: black;
-    background-color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
-    opacity: 0.4;
-    transition: opacity 200ms ease-in;
-    &:hover {
-      opacity: 0.9;
-    }
-    :focus {
-      outline: 0;
-    }
-  }
-  @media print {
-    display: none;
-  }
-`;
-
-export const ResumeJobDetailsButton = styled.button`
-  display: inline-flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: flex-start;
-  box-sizing: border-box;
-  padding: 0.4rem 0.8rem;
-  margin: 5px 0 0 0;
-  border: none;
-  text-align: center;
-  white-space: nowrap;
-  transition-duration: 0.2s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  opacity: 0.7;
-  transition: opacity 200ms ease-in;
-  :focus {
-    outline: 0;
-  }
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const ResumeJobDetails: FC<{ children: JSX.Element; defaultCollapsed?: boolean }> = ({
-  children,
-  defaultCollapsed = true,
-}: {
-  children: JSX.Element;
-  defaultCollapsed?: boolean;
-}) => {
-  const [collapsed, setCollapsed] = useState<boolean>(defaultCollapsed);
-  const toggle = useCallback(() => {
-    setCollapsed(!collapsed);
-  }, [collapsed, setCollapsed]);
-  return (
-    <>
-      <ResumeJobDetailsButton onClick={toggle}>{collapsed ? 'Expand' : 'Collapse'}</ResumeJobDetailsButton>
-      <ResumeJobParagraph collapsed={collapsed}>{children}</ResumeJobParagraph>
-    </>
-  );
-};
-
-ResumeJobDetails.defaultProps = { defaultCollapsed: true };
+import {
+  JobDomain,
+  JobDomainName,
+  JobDutiesLI,
+  JobDutiesList,
+  JobTechnologies,
+  JobTechnologiesHeader,
+  PrintButton,
+  ResumeArticle,
+  ResumeArticleSubtitle,
+  ResumeJobDate,
+  ResumeJobDetails,
+  ResumeJobPlace,
+  ResumeMain,
+  ResumeParagraph,
+  ResumeSectionContent,
+  ResumeSections,
+  ResumeSectionTitle,
+  ResumeSkills,
+} from '../components/resume/index.';
 
 const ResumeRoute: FC = () => {
   const componentRef = useRef();
@@ -330,7 +134,7 @@ const ResumeRoute: FC = () => {
                     Programming: adding new components to existed program solution (JavaEE, Spring framework)
                   </JobDutiesLI>
                   <JobDutiesLI>
-                    Creating validation and transformation tools for raw customer's data (Python).
+                    Creating validation and transformation tools for raw customer&apos;s data (Python).
                   </JobDutiesLI>
                   <JobDutiesLI>
                     Interacting with developers and managers at remote locations (Russia, India)
@@ -396,12 +200,12 @@ const ResumeRoute: FC = () => {
           <ResumeArticle>
             <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
             <ResumeJobDate>2018 - 2019</ResumeJobDate>
-            <ResumeParagraph>Master's degree. Informatics.</ResumeParagraph>
+            <ResumeParagraph>Master&apos;s degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
           <ResumeArticle>
             <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
             <ResumeJobDate>2014 - 2018</ResumeJobDate>
-            <ResumeParagraph>Bachelor's degree. Informatics.</ResumeParagraph>
+            <ResumeParagraph>Bachelor&apos;s degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
         </ResumeSectionContent>
       </ResumeSections>

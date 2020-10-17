@@ -324,6 +324,21 @@ const ResumeRoute: FC = () => {
         </ResumeSectionContent>
       </ResumeSections>
       <ResumeSections>
+        <ResumeSectionTitle>Education</ResumeSectionTitle>
+        <ResumeSectionContent>
+          <ResumeArticle>
+            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+            <ResumeWorkDate>2018 - 2019</ResumeWorkDate>
+            <ResumeParagraph>Master's degree. Informatics.</ResumeParagraph>
+          </ResumeArticle>
+          <ResumeArticle>
+            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+            <ResumeWorkDate>2014 - 2018</ResumeWorkDate>
+            <ResumeParagraph>Bachelor's degree. Informatics.</ResumeParagraph>
+          </ResumeArticle>
+        </ResumeSectionContent>
+      </ResumeSections>
+      <ResumeSections>
         <ResumeSectionTitle>Key Skills</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeSkills>
@@ -339,17 +354,12 @@ const ResumeRoute: FC = () => {
         </ResumeSectionContent>
       </ResumeSections>
       <ResumeSections>
-        <ResumeSectionTitle>Education</ResumeSectionTitle>
+        <ResumeSectionTitle>Languages</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeArticle>
-            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
-            <ResumeWorkDate>2018 - 2019</ResumeWorkDate>
-            <ResumeParagraph>Master's degree. Informatics.</ResumeParagraph>
-          </ResumeArticle>
-          <ResumeArticle>
-            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
-            <ResumeWorkDate>2014 - 2018</ResumeWorkDate>
-            <ResumeParagraph>Bachelor's degree. Informatics.</ResumeParagraph>
+            <ResumeArticleSubtitle>English</ResumeArticleSubtitle>
+            <ResumeArticleSubtitle>Ukrainian</ResumeArticleSubtitle>
+            <ResumeArticleSubtitle>Russian</ResumeArticleSubtitle>
           </ResumeArticle>
         </ResumeSectionContent>
       </ResumeSections>

@@ -1,3 +1,5 @@
+import { graphql, StaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import React, { FC, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
@@ -8,11 +10,17 @@ import {
   JobDutiesList,
   JobTechnologies,
   JobTechnologiesHeader,
+  PersonContact, PersonContactBlock,
+  PersonName,
   PrintButton,
+  ProfileImage,
+  ProfileParagraph,
+  ProfileParagraphText,
   ResumeArticle,
   ResumeArticleSubtitle,
   ResumeJobDate,
   ResumeJobDetails,
+  ResumeJobHeader,
   ResumeJobPlace,
   ResumeMain,
   ResumeParagraph,
@@ -40,8 +48,21 @@ const ResumeRoute: FC = () => {
         <ResumeSectionContent>
           <ResumeArticle>
             <ResumeParagraph>
-              I believe that programming and computer science entirely is my calling in life. I develop my technical and
-              soft skills; get new experience and knowledge to be a role model in my field.
+              <ProfileParagraph>
+                <ProfileImage />
+                <ProfileParagraphText>
+                  <PersonName>Maxim Vynohradov</PersonName>
+                  <ResumeArticleSubtitle>Senior Software Engineer</ResumeArticleSubtitle>
+                  <PersonContactBlock>
+                    <PersonContact href="https://www.linkedin.com/in/max-vynohradov/">LinkedIn</PersonContact>
+                    <PersonContact href="https://twitter.com/max_vynohradov">Twitter</PersonContact>
+                    <PersonContact href="mailto:vinogradov.max97@gmail.com">Email</PersonContact>
+                  </PersonContactBlock>
+                  I believe that programming and computer science entirely is my
+                  calling in life. I develop my technical and soft skills; get new experience and knowledge to be a role
+                  model in my field. Also, I&apos;m big of Serverless, AWS Lambdas, Node.js and TypeScript.
+                </ProfileParagraphText>
+              </ProfileParagraph>
             </ResumeParagraph>
           </ResumeArticle>
         </ResumeSectionContent>
@@ -50,9 +71,15 @@ const ResumeRoute: FC = () => {
         <ResumeSectionTitle>Work Experience</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeArticle>
-            <ResumeArticleSubtitle>Senior Software Engineer</ResumeArticleSubtitle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Senior Software Engineer</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                Oct 2017
+                <br />
+                Present
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeJobPlace href="http://brocoders.com/">Brocoders | Software Development Company</ResumeJobPlace>
-            <ResumeJobDate>October 2017 - Present</ResumeJobDate>
             <ResumeJobDetails>
               <>
                 <JobDutiesList>
@@ -83,9 +110,15 @@ const ResumeRoute: FC = () => {
           </ResumeArticle>
 
           <ResumeArticle>
-            <ResumeArticleSubtitle>Team Lead, Back-end Developer</ResumeArticleSubtitle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Team Lead, Back-end Developer</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                Sep 2018
+                <br />
+                Feb 2020
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeJobPlace href="httpa://gokada.ng/">GOKADA- We do delivery now</ResumeJobPlace>
-            <ResumeJobDate>September 2018 - February 2020</ResumeJobDate>
 
             <ResumeJobDetails>
               <>
@@ -121,9 +154,15 @@ const ResumeRoute: FC = () => {
           </ResumeArticle>
 
           <ResumeArticle>
-            <ResumeArticleSubtitle>Technical Solution Support Engineer</ResumeArticleSubtitle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Technical Solution Support Engineer</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                Jun 2016
+                <br />
+                Sep 2017
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeJobPlace href="https://www.netcracker.com/">Netcracker Technology</ResumeJobPlace>
-            <ResumeJobDate>June 2016 - September 2017</ResumeJobDate>
 
             <ResumeJobDetails>
               <>
@@ -161,9 +200,15 @@ const ResumeRoute: FC = () => {
           </ResumeArticle>
 
           <ResumeArticle>
-            <ResumeArticleSubtitle>Senior Technical Assistant</ResumeArticleSubtitle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Senior Technical Assistant</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                Jun 2016
+                <br />
+                Sep 2017
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeJobPlace href="https://www.netcracker.com/">Sumy State University</ResumeJobPlace>
-            <ResumeJobDate>June 2016 - September 2017</ResumeJobDate>
 
             <ResumeJobDetails>
               <>
@@ -198,13 +243,25 @@ const ResumeRoute: FC = () => {
         <ResumeSectionTitle>Education</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeArticle>
-            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
-            <ResumeJobDate>2018 - 2019</ResumeJobDate>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                2018
+                <br />
+                2019
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeParagraph>Master&apos;s degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
           <ResumeArticle>
-            <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
-            <ResumeJobDate>2014 - 2018</ResumeJobDate>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Sumy State University</ResumeArticleSubtitle>
+              <ResumeJobDate>
+                2014
+                <br />
+                2018
+              </ResumeJobDate>
+            </ResumeJobHeader>
             <ResumeParagraph>Bachelor&apos;s degree. Informatics.</ResumeParagraph>
           </ResumeArticle>
         </ResumeSectionContent>

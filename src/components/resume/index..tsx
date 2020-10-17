@@ -1,3 +1,5 @@
+import { graphql, StaticQuery } from 'gatsby';
+import Img, { FluidObject } from 'gatsby-image';
 import React, { FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -45,6 +47,12 @@ export const ResumeArticle = styled.article`
   display: block;
 `;
 
+export const ResumeJobHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const ResumeArticleSubtitle = styled.h2`
   font-size: 20px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -56,13 +64,15 @@ export const ResumeJobPlace = styled.a`
   display: block;
   font-size: 16px;
   font-style: italic;
-  color: black;
+  color: #6745b0;
   margin-bottom: 5px;
 `;
 
 export const ResumeJobDate = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
+  padding: 0 5px 0 5px;
+  min-width: 40px;
 `;
 
 export const JobDutiesList = styled.ul`
@@ -225,3 +235,69 @@ export const ResumeJobDetails: FC<{ children: JSX.Element; defaultCollapsed?: bo
 };
 
 ResumeJobDetails.defaultProps = { defaultCollapsed: true };
+
+export const ProfileParagraph = styled.div`
+  background-color: #f7f3ff;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+`;
+
+export const ProfileParagraphText = styled.div`
+  display: block;
+  width: 100%;
+`;
+
+export const PersonContact = styled.a`
+  margin: 0 15px 5px 0;
+  font-style: italic;
+  color: #6745b0;
+`;
+
+export const PersonContactBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  @media (max-width: 960px) {
+    justify-content: center;
+  }
+`;
+
+export const PersonName = styled.p`
+  font-size: 23px;
+  padding: 0 0 5px 0;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+
+  @media screen and (max-width: 960px) {
+    padding-bottom: 15px;
+  }
+`;
+
+const StyledProfileImage = styled(Img)<{ fixed: FluidObject | FluidObject[] }>`
+  display: block !important;
+  margin: 0 15px 10px 10px;
+  width: 500px;
+  height: 240px;
+  border-radius: 15px;
+  @media screen and (max-width: 960px) {
+    width: 800px;
+    height: 140px;
+  }
+`;
+
+export const ProfileImage: FC = () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        profileImage: file(relativePath: { eq: "profile.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => <StyledProfileImage fixed={data.profileImage.childImageSharp.fluid} />}
+  />
+);

@@ -27,7 +27,7 @@ import {
   ResumeSectionContent,
   ResumeSections,
   ResumeSectionTitle,
-  ResumeSkills,
+  ResumeSkills, ResumeSkillsColumns,
 } from '../components/resume/index.';
 
 const ResumeRoute: FC = () => {
@@ -270,14 +270,196 @@ const ResumeRoute: FC = () => {
         <ResumeSectionTitle>Key Skills</ResumeSectionTitle>
         <ResumeSectionContent>
           <ResumeSkills>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
-            <li>A Key Skill</li>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>Tech Stack</h4>
+                <span>JavaScript</span>
+                <span>Node.js</span>
+                <span>TypeScript</span>
+                <span>REST</span>
+                <span>GraphQL</span>
+                <span>FaaS</span>
+                <span>Serverless</span>
+                <span>Express.js</span>
+                <span>Nest.js</span>
+                <span>Apollo</span>
+                <span>React.js</span>
+                <span>Gatsby.js</span>
+              </div>
+              <div>
+                <h4>Industry knowledge</h4>
+                <span>Agile Methodologies</span>
+                <span>Design Patterns</span>
+                <span>TDD</span>
+                <span>Technical Documentation</span>
+                <span>Technical Support</span>
+              </div>
+              <div>
+                <h4>Containerization</h4>
+                <span>Docker</span>
+                <span>Docker Compose</span>
+                <span>AWS ECS</span>
+              </div>
+              <div>
+                <h4>Public Clouds/Platforms</h4>
+                <span>Amazon Web Services</span>
+                <span>Netlify</span>
+              </div>
+              <div>
+                <h4>IaC</h4>
+                <span>AWS CloudFormation</span>
+                <span>Pulumi</span>
+              </div>
+            </ResumeSkillsColumns>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>AWS Cloud Services</h4>
+                <span>EC2</span>
+                <span>ALB</span>
+                <span>Lambda</span>
+                <span>S3</span>
+                <span>CloudFront</span>
+                <span>ECR</span>
+                <span>ECS</span>
+                <span>API Gateway</span>
+                <span>RDS</span>
+                <span>Elastic Cache</span>
+                <span>Route 53</span>
+                <span>DynamoDB</span>
+                <span>CloudWatch</span>
+                <span>CodeBuild/Pipeline</span>
+              </div>
+              <div>
+                <h4>Databases</h4>
+                <span>PostgreSQL</span>
+                <span>OracleDB</span>
+                <span>MongoDB</span>
+                <span>Redis</span>
+                <span>DynamoDB</span>
+              </div>
+              <div>
+                <h4>Continuous Integration</h4>
+                <span>AWS CodePipeline</span>
+                <span>AWS CodeBuild</span>
+                <span>GitHub Actions</span>
+                <span>Jenkins</span>
+              </div>
+              <div>
+                <h4>Observability</h4>
+                <span>Sentry</span>
+                <span>AWS Application Insights</span>
+                <span>Cadvisor</span>
+              </div>
+              <div>
+                <h4>Logging</h4>
+                <span>AWS CloudWatch logs</span>
+                <span>Kibana</span>
+              </div>
+              <div>
+                <h4>Scripting</h4>
+                <span>shell</span>
+                <span>nodejs</span>
+                <span>python</span>
+              </div>
+            </ResumeSkillsColumns>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>Popular APIs & SDK</h4>
+                <span>Twilio</span>
+                <span>AWS SDK</span>
+                <span>Mapbox</span>
+                <span>Google Maps</span>
+                <span>SendGrid</span>
+                <span>Mailgun</span>
+                <span>MixPanel</span>
+              </div>
+              <div>
+                <h4>Chat Bots</h4>
+                <span>Telegram</span>
+                <span>Slack</span>
+              </div>
+              <div>
+                <h4>BI systems</h4>
+                <span>Metabase</span>
+              </div>
+              <div>
+                <h4>Testing</h4>
+                <span>Jest</span>
+                <span>Mocha</span>
+                <span>Chai</span>
+                <span>Nyc</span>
+                <span>Mutation Testing / Stryker</span>
+                <span>Testing Coverege</span>
+                <span>Ava</span>
+                <span>Sinon</span>
+                <span>super-agent</span>
+                <span>Postman</span>
+                <span>Cypress</span>
+              </div>
+              <div>
+                <h4>Codestyle</h4>
+                <span>EsLint</span>
+                <span>Prettier</span>
+                <span>EditorConfig</span>
+                <span>JSCPD</span>
+              </div>
+              <div>
+                <h4>Issue Tracking</h4>
+                <span>Jira</span>
+                <span>GitHub Issues</span>
+                <span>Trello</span>
+                <span>Waffle</span>
+                <span>MeisterTask</span>
+              </div>
+            </ResumeSkillsColumns>
+          </ResumeSkills>
+        </ResumeSectionContent>
+      </ResumeSections>
+      <ResumeSections>
+        <ResumeSectionTitle>Also Have Experience With</ResumeSectionTitle>
+        <ResumeSectionContent>
+          <ResumeSkills>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>Java</h4>
+                <span>Java SE</span>
+                <span>Java EE</span>
+                <span>Servlets</span>
+                <span>JSP</span>
+                <span>Spring Core</span>
+                <span>JMS</span>
+                <span>Web Logic</span>
+                <span>FindBugs</span>
+                <span>PMD</span>
+              </div>
+            </ResumeSkillsColumns>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>Python</h4>
+                <span>Pandas</span>
+                <span>pycharts</span>
+                <span>Matplotlib</span>
+                <span>GBoost</span>
+                <span>Flask</span>
+                <span>pytest</span>
+                <span>pylint</span>
+                <span>flake8</span>
+              </div>
+            </ResumeSkillsColumns>
+            <ResumeSkillsColumns>
+              <div>
+                <h4>Ruby</h4>
+                <span>Ruby core</span>
+                <span>Ruby On Rails</span>
+                <span>Device</span>
+                <span>RSpec</span>
+                <span>Rubocop</span>
+              </div>
+              <div>
+                <h4>And others...</h4>
+                <span>jQuery</span>
+              </div>
+            </ResumeSkillsColumns>
           </ResumeSkills>
         </ResumeSectionContent>
       </ResumeSections>

@@ -138,14 +138,41 @@ export const ResumeSubDetails = styled.p`
   margin-bottom: 3px;
 `;
 
-export const ResumeSkills = styled.ul`
-  list-style-type: none;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
-  column-count: 3;
+export const ResumeSkills = styled.div`
+  display: flex;
   margin-bottom: 20px;
   font-size: 1em;
   color: #444;
+
+  @media (max-width: 960px) {
+    width: 100%;
+    display: block;
+  }
+`;
+
+export const ResumeSkillsColumns = styled.div`
+  width: 30%;
+  margin-right: 3%;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+
+  div {
+    h4 {
+      color: #6745b0;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+      margin: 5px 0 5px 0;
+    }
+    span {
+      font-size: 14px;
+      display: inline-block;
+      background-color: #f7f3ff;
+      padding: 4px 6px;
+      margin: 3px 5px 3px 0;
+      border-radius: 10px;
+    }
+  }
 `;
 
 export const PrintButton = styled.button`

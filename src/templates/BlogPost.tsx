@@ -96,7 +96,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
           <PostTitle postLink={postLink} title={title} id="postTitle" />
         </PostTitleWrapper>
         <PostMeta date={date} timeToRead={stats.text} wordsCount={stats.words} />
-        <PostTagList tags={tags} />
+        <PostTagList tags={tags} id="postTagsList" />
       </header>
       <main id="postBody">
         <MDXProvider components={mdxProviderComponentsList}>
@@ -108,7 +108,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
         />
       </main>
       <footer>
-        <ShareLinksSection>
+        <ShareLinksSection id="postShareLinks">
           <ShareSocialBlock
             socialConfig={{
               twitterHandle,

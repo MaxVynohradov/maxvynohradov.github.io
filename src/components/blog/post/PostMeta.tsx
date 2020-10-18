@@ -18,14 +18,16 @@ const PostMetaItem = styled.span`
 `;
 
 interface PostMetaProps {
-  date: Date;
+  date: string;
   timeToRead: string;
   wordsCount: number;
 }
 
 export const PostMeta: FC<PostMetaProps> = ({ date, timeToRead, wordsCount }: PostMetaProps) => (
   <PostMetaContainer id="postMeta">
-    <PostMetaItem>{dayjs(date).format('DD MMMM YYYY')}</PostMetaItem>
+    <PostMetaItem id="postDateTime">
+      <time dateTime={date}>{dayjs(date).format('DD MMMM YYYY')}</time>
+    </PostMetaItem>
     <PostMetaItem>{timeToRead}</PostMetaItem>
     <PostMetaItem>
       {wordsCount}

@@ -1,5 +1,6 @@
 import { graphql, PageProps } from 'gatsby';
 import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
 import readingTime from 'reading-time';
 
 import { PostItemProps } from '../components/blog/interfaces/PostItemProps';
@@ -18,6 +19,9 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   }));
   return (
     <div>
+      <Helmet>
+        <meta name="google-site-verification" content="3nW_Loo81kowYXSp_stzMufeF24lMB-m9zQCZAwuTiE" />
+      </Helmet>
       {postList.map((item: PostItemProps, idx) => (
         <PostListItem key={idx.toString()} {...item} />
       ))}

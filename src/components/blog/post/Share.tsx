@@ -41,6 +41,7 @@ const SocialHoc = (component: SocialHocComponentType) => styled(component)<{ col
   cursor: pointer;
   color: ${props => props.color};
   border-color: ${props => props.color};
+  background-color: white;
   font-size: 16px;
   :focus {
     outline: 0;

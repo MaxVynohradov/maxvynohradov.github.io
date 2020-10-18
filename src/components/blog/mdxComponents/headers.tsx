@@ -27,9 +27,8 @@ export const MdxHeader3 = styled.h3`
   font-size: 2.32em;
   font-weight: 400;
   line-height: 1.25em;
-  margin-bottom: 0.5em;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
+  margin-block-start: 0.43em;
+  margin-block-end: 0.43em;
   margin-inline-start: 0;
   margin-inline-end: 0;
   overflow-wrap: break-word;
@@ -48,7 +47,9 @@ export const MdxHeader4 = styled.h4`
   margin-inline-start: 0;
   margin-inline-end: 0;
   overflow-wrap: break-word;
-
+  a {
+    font-weight: bold;
+  }
 `;
 
 export const MdxHeader5 = styled.h5`

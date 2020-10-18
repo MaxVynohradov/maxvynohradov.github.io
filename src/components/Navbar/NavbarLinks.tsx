@@ -8,6 +8,8 @@ const NavItem = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: 600;
+  letter-spacing: 1px;
 
   white-space: nowrap;
   margin: 0 1vw;

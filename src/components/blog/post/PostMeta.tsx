@@ -7,7 +7,7 @@ const PostMetaContainer = styled.div`
   font-size: 17px;
   line-height: 28px;
   color: #7b5a7b;
-  font-weight: 700;
+  font-weight: 600;
   padding-left: 5px;
 `;
 

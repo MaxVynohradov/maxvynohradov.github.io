@@ -17,13 +17,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: ['Manrope'],
-        display: 'swap',
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'blog',
@@ -49,6 +42,13 @@ module.exports = {
       options: {
         name: 'images',
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'fonts',
+        path: `${__dirname}/src/fonts`,
       },
     },
     'gatsby-transformer-sharp',

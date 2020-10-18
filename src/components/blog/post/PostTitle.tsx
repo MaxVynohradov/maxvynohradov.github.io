@@ -10,7 +10,7 @@ export const PostHeaderText = styled.h1`
   z-index: 1;
   line-height: 40px;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 const PostTitleLink = styled(Link)`

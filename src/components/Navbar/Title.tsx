@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const TitleWrap = styled.div`
   margin: auto 0;
-  padding-left: 15vh;
+  padding-left: 25vh;
   flex: 0 1 36px;
 
   @media (max-width: 960px) {
@@ -20,6 +20,9 @@ const TitleWrap = styled.div`
 const LogoLink = styled(Link)`
   text-decoration: none;
   color: #111;
+  h1 {
+    font-weight: 600;
+  }
 `;
 
 const Logo = () => {

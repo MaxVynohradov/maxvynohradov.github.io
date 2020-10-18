@@ -6,6 +6,7 @@ import styled from 'styled-components';
 export const ResumeMain = styled.main`
   margin: 20px 0 45px 0;
   font-size: 1.1em;
+  color: black;
   @media print {
     background-color: white;
     font-size: 18px;
@@ -27,7 +28,6 @@ export const ResumeSectionTitle = styled.h1`
   font-size: 23px;
   width: 20%;
   padding-right: 15px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 
   @media screen and (max-width: 960px) {
     width: 100%;
@@ -55,7 +55,7 @@ export const ResumeJobHeader = styled.div`
 
 export const ResumeArticleSubtitle = styled.h2`
   font-size: 20px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
   margin-bottom: 8px;
   margin-top: 3px;
 `;
@@ -98,7 +98,7 @@ export const JobDomain = styled.p`
 `;
 
 export const JobDomainName = styled.span`
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 `;
 
 export const JobTechnologies = styled.p`
@@ -107,7 +107,7 @@ export const JobTechnologies = styled.p`
 `;
 
 export const JobTechnologiesHeader = styled.span`
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 `;
 
 export const ResumeParagraph = styled.div`
@@ -161,7 +161,7 @@ export const ResumeSkillsColumns = styled.div`
   div {
     h4 {
       color: #6745b0;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+      font-weight: 600;
       margin: 5px 0 5px 0;
     }
     span {
@@ -296,7 +296,7 @@ export const PersonContactBlock = styled.div`
 export const PersonName = styled.p`
   font-size: 23px;
   padding: 0 0 5px 0;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 
   @media screen and (max-width: 960px) {
     padding-bottom: 15px;

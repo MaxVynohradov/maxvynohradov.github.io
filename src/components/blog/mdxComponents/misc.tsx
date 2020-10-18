@@ -32,7 +32,7 @@ export const MdxParagraph = styled.p`
   display: block;
   letter-spacing: -0.003em;
   line-height: 32px;
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 21px;
   font-weight: 400;
   word-break: break-word;

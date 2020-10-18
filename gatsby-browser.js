@@ -1,5 +1,6 @@
 import './src/themes/gittalk.css';
 import './src/themes/deckgoHighlightCode.css';
+import './src/fonts/fonts.css';
 
 import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 import React from 'react';

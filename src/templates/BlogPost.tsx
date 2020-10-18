@@ -88,7 +88,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
 
   const { pathname: postLink } = useLocation();
   return (
-    <PostSectionContainer>
+    <PostSectionContainer id="postBody">
       <SEO title={title} description={description} image={coverImgFixed} pathname={postLink} />
       <header>
         <PostTitleWrapper>

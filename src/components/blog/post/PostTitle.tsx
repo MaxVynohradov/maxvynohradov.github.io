@@ -24,6 +24,8 @@ const PostTitleLink = styled(Link)`
 interface PostTitleProps {
   postLink: string;
   title: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  id: string;
 }
 
 export const PostTitle: FC<PostTitleProps> = ({ postLink, title }: PostTitleProps) => (

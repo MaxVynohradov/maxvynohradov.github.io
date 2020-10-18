@@ -92,13 +92,13 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
       <SEO title={title} description={description} image={coverImgFixed} pathname={postLink} />
       <header>
         <PostTitleWrapper>
-          <PostHeaderImage coverImgSrc={coverImgSrc} />
-          <PostTitle postLink={postLink} title={title} />
+          <PostHeaderImage coverImgSrc={coverImgSrc} id="postImage" />
+          <PostTitle postLink={postLink} title={title} id="postTitle" />
         </PostTitleWrapper>
         <PostMeta date={date} timeToRead={stats.text} wordsCount={stats.words} />
         <PostTagList tags={tags} />
       </header>
-      <main>
+      <main id="postBody">
         <MDXProvider components={mdxProviderComponentsList}>
           <MDXRenderer>{mainText}</MDXRenderer>
         </MDXProvider>

@@ -26,6 +26,8 @@ const PostImage = styled.img`
 
 interface PostHeaderImageProps {
   coverImgSrc: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  id: string;
 }
 
 export const PostHeaderImage: FC<PostHeaderImageProps> = ({ coverImgSrc }: PostHeaderImageProps) => (

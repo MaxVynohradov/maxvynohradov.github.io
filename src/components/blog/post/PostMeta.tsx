@@ -24,7 +24,7 @@ interface PostMetaProps {
 }
 
 export const PostMeta: FC<PostMetaProps> = ({ date, timeToRead, wordsCount }: PostMetaProps) => (
-  <PostMetaContainer>
+  <PostMetaContainer id="postMeta">
     <PostMetaItem>{dayjs(date).format('DD MMMM YYYY')}</PostMetaItem>
     <PostMetaItem>{timeToRead}</PostMetaItem>
     <PostMetaItem>

@@ -22,6 +22,7 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
       <Helmet>
         <meta name="google-site-verification" content="3nW_Loo81kowYXSp_stzMufeF24lMB-m9zQCZAwuTiE" />
         <meta name="yandex-verification" content="577ed1e1bb427dd9" />
+        <meta name="msvalidate.01" content="FF958DC350391A726E42368F26F6A4B9" />
       </Helmet>
       {postList.map((item: PostItemProps, idx) => (
         <PostListItem key={idx.toString()} {...item} />

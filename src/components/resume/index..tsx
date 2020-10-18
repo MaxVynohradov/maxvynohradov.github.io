@@ -288,6 +288,9 @@ export const PersonContactBlock = styled.div`
   @media (max-width: 960px) {
     justify-content: center;
   }
+  @media print {
+    justify-content: left;
+  }
 `;
 
 export const PersonName = styled.p`
@@ -309,6 +312,10 @@ const StyledProfileImage = styled(Img)<{ fixed: FluidObject | FluidObject[] }>`
   @media screen and (max-width: 960px) {
     width: 800px;
     height: 140px;
+  }
+  @media print {
+    width: 0;
+    height: 0;
   }
 `;
 

@@ -56,6 +56,7 @@ const SEO: FC<SeoProps> = ({ description, lang, meta = [], image: metaImage, tit
     { name: 'twitter:creator', content: site.siteMetadata.author },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: `${metaDescription.substring(0, 234)}...` },
+    { name: 'telegram:channel', content: '@vynohradov_blog' },
   ]
     .concat(additionalMeta)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

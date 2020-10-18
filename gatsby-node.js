@@ -46,6 +46,11 @@ exports.createPages = async ({ graphql, actions }) => {
                       src,
                       srcSet
                     }
+                    fixed {
+                      height
+                      width
+                      src
+                    }
                   }
                 }
               }
@@ -77,7 +82,16 @@ exports.createPages = async ({ graphql, actions }) => {
         siteMetadata,
         slug,
         body,
-        frontmatter: { title, description, date, coverImgSrc: coverImg.childImageSharp.fluid.src, tags },
+        frontmatter: {
+          title, description, date,
+          coverImgFixed: {
+            src: coverImg.childImageSharp.fixed.src,
+            height: coverImg.childImageSharp.fixed.height,
+            width: coverImg.childImageSharp.fixed.width,
+          },
+          coverImgSrc: coverImg.childImageSharp.fluid.src,
+          tags
+        },
         stats: readingTime(body, { wordsPerMinute: 360 }),
         previous,
         next,

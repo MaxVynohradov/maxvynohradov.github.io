@@ -19,6 +19,7 @@ import {
   PostTitleWrapper,
   ShareSocialBlock,
 } from '../components/blog/post';
+import SEO from '../components/SEO';
 
 interface PageContext {
   siteMetadata: {
@@ -66,7 +67,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
       previous,
       next,
       stats,
-      frontmatter: { tags, date, title, coverImgSrc },
+      frontmatter: { tags, date, title, coverImgSrc, description, coverImgFixed },
     },
   } = props;
 
@@ -88,6 +89,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
   const { pathname: postLink } = useLocation();
   return (
     <PostSectionContainer>
+      <SEO title={title} description={description} image={coverImgFixed} pathname={postLink} />
       <header>
         <PostTitleWrapper>
           <PostHeaderImage coverImgSrc={coverImgSrc} />

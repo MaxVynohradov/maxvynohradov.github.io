@@ -7,6 +7,17 @@ module.exports = {
     description: 'Blog, portfolio, resume',
     author: '@MaxVynohradov',
     siteUrl: 'https://maxvynohradov.github.io/',
+    keywords: [
+      'blog',
+      'development',
+      'nodejs',
+      'typescript',
+      'javascript',
+      'oop',
+      'design patterns',
+      'aws',
+      'serverless',
+    ],
     social: {
       twitterHandle: '@max_vynohradov',
       twitter: 'https://twitter.com/max_vynohradov',

@@ -13,6 +13,7 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
     stats: readingTime(body, { wordsPerMinute: 360 }),
     date: frontmatter.date,
     description: frontmatter.description,
+    originalUrl: frontmatter.originalUrl,
     tags: frontmatter.tags,
     title: frontmatter.title,
     coverImgSrc: frontmatter.coverImg.childImageSharp.fluid.src,
@@ -41,6 +42,7 @@ export const query = graphql`
           frontmatter {
             title
             description
+            originalUrl
             date
             tags
             coverImg {

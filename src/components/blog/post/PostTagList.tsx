@@ -52,7 +52,7 @@ const PostTag = styled.div`
   }
 `;
 
-export const PostTagList: FC<{ tags: string[]; id: string }> = ({ tags }: { tags: string[] }) => (
+export const PostTagList: FC<{ tags: string[] }> = ({ tags }: { tags: string[] }) => (
   <PostTagsContainer>
     {tags.map((tag, idx) => (
       <PostTag key={idx.toString()}>{tag}</PostTag>

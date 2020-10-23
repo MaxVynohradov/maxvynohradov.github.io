@@ -9,6 +9,13 @@ const DescriptionContainer = styled.main`
   font-weight: 400;
 `;
 
+const OriginalOnBlock = styled.p`
+  font-style: italic;
+  font-size: 16px;
+  padding: 5px 0 0 0;
+  font-weight: 400;
+`;
+
 const ContinueToReadLink = styled(Link)`
   text-decoration: none;
   line-height: 28px;
@@ -22,12 +29,24 @@ const ContinueToReadLink = styled(Link)`
 interface PostDescriptionProps {
   description: string;
   postLink: string;
+  // eslint-disable-next-line react/require-default-props
+  originalUrl?: string;
 }
 
-export const PostDescription: FC<PostDescriptionProps> = ({ description, postLink }: PostDescriptionProps) => (
+export const PostDescription: FC<PostDescriptionProps> = ({
+  description,
+  postLink,
+  originalUrl,
+}: PostDescriptionProps) => (
   <DescriptionContainer>
     {description}
     &nbsp;
     <ContinueToReadLink to={postLink}>Read more...</ContinueToReadLink>
+    {originalUrl && (
+      <OriginalOnBlock>
+        Original on&nbsp;
+        <a href={originalUrl}>{originalUrl}</a>
+      </OriginalOnBlock>
+    )}
   </DescriptionContainer>
 );

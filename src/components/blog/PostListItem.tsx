@@ -14,7 +14,7 @@ import {
 } from './post';
 
 export const PostListItem: FC<PostItemProps> = (props: PostItemProps) => {
-  const { slug, title, description, date, tags, coverImgSrc, stats } = props;
+  const { slug, title, description, date, tags, coverImgSrc, stats, originalUrl } = props;
   const { pathname } = useLocation();
   const postLink = pathname === '/' ? `blog/${slug}` : slug;
   return (
@@ -24,10 +24,10 @@ export const PostListItem: FC<PostItemProps> = (props: PostItemProps) => {
           <PostHeaderImage coverImgSrc={coverImgSrc} />
           <PostTitle postLink={postLink} title={title} />
         </PostTitleWrapper>
-        <PostMeta date={date} timeToRead={stats.text} wordsCount={stats.words} />
+        <PostMeta date={date.toString()} timeToRead={stats.text} wordsCount={stats.words} />
         <PostTagList tags={tags} />
       </header>
-      <PostDescription description={description} postLink={postLink} />
+      <PostDescription description={description} postLink={postLink} originalUrl={originalUrl} />
     </PostSectionContainer>
   );
 };

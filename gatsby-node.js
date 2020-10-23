@@ -37,6 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 description
+                originalUrl
                 date
                 tags
                 coverImg {
@@ -74,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     const { node: { body, slug } } = post
-    const { title, description, date, coverImg, tags } = post.node.frontmatter;
+    const { title, description, date, coverImg, tags, originalUrl } = post.node.frontmatter;
     createPage({
       path: `blog/${slug}`,
       component: blogPost,
@@ -83,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug,
         body,
         frontmatter: {
-          title, description, date,
+          title, description, date, originalUrl,
           coverImgFixed: {
             src: coverImg.childImageSharp.fixed.src,
             height: coverImg.childImageSharp.fixed.height,

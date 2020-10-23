@@ -5,6 +5,7 @@ export interface PostItemProps {
   date: Date;
   tags: string[];
   coverImgSrc: string;
+  originalUrl?: string;
   stats: {
     text: string;
     minutes: number;

@@ -33,9 +33,8 @@ import {
 import SEO from '../components/SEO';
 
 const description = `
-Back-end Engineer, Team Lead, sometimes DevOps. Addicted Node.js and TypeScript, Serverless, AWS Lambdas.
-I believe that programming and computer science entirely is my calling in life. I develop my technical
-and soft skills; get new experience and knowledge to be a role model in my field.
+Back-end Engineer, Team Lead, sometimes DevOps. Addicted to Node.js and TypeScript, Serverless, AWS Lambdas.
+Fan of digital arts, good books and dogs.
 `;
 
 interface ResumeRouteProps {

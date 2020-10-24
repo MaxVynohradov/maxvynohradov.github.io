@@ -99,7 +99,10 @@ module.exports = {
         icon: 'src/images/logo-icon-new.png',
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-offline',
+      precachePages: ['/blog/*'],
+    },
     {
       resolve: 'gatsby-plugin-styled-components',
     },

@@ -5,6 +5,7 @@ import readingTime from 'reading-time';
 
 import { PostItemProps } from '../components/blog/interfaces/PostItemProps';
 import { PostListItem } from '../components/blog/PostListItem';
+import SEO from '../components/SEO';
 
 const BlogPostsList: FC<PageProps> = (props: PageProps) => {
   const { data } = props;
@@ -18,6 +19,9 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
     title: frontmatter.title,
     coverImgSrc: frontmatter.coverImg.childImageSharp.fluid.src,
   }));
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const seoImage = data.profileImage.childImageSharp.fixed;
   return (
     <div>
       <Helmet>
@@ -25,7 +29,8 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
         <meta name="yandex-verification" content="577ed1e1bb427dd9" />
         <meta name="msvalidate.01" content="FF958DC350391A726E42368F26F6A4B9" />
       </Helmet>
-      {postList.map((item: PostItemProps, idx) => (
+      <SEO image={seoImage} />
+      {postList.map((item: PostItemProps, idx: number) => (
         <PostListItem key={idx.toString()} {...item} />
       ))}
     </div>
@@ -34,6 +39,15 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
 
 export const query = graphql`
   query BlogPostQuery {
+    profileImage: file(relativePath: { eq: "profile.jpg" }) {
+      childImageSharp {
+        fixed {
+          height
+          width
+          src
+        }
+      }
+    }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
       edges {
         node {

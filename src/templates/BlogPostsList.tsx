@@ -29,7 +29,12 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
         <meta name="yandex-verification" content="577ed1e1bb427dd9" />
         <meta name="msvalidate.01" content="FF958DC350391A726E42368F26F6A4B9" />
       </Helmet>
-      <SEO image={seoImage} />
+      <SEO
+        title="Vynohradov Blog"
+        description="Blog about programing, program architecture, JavaScript, Node.js, TypeScript, Serverless and so on"
+        image={seoImage}
+        pathname="https://maxvynohradov.github.io/me"
+      />
       {postList.map((item: PostItemProps, idx: number) => (
         <PostListItem key={idx.toString()} {...item} />
       ))}

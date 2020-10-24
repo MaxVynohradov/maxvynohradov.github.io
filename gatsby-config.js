@@ -99,10 +99,11 @@ module.exports = {
         icon: 'src/images/logo-icon-new.png',
       },
     },
-    {
-      resolve: 'gatsby-plugin-offline',
-      precachePages: ['/blog/*'],
-    },
+    'gatsby-plugin-remove-serviceworker',
+    // {
+    //   resolve: 'gatsby-plugin-offline',
+    //   precachePages: ['/blog/*'],
+    // },
     {
       resolve: 'gatsby-plugin-styled-components',
     },

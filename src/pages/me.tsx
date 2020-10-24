@@ -1,5 +1,4 @@
-import { graphql, StaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql, PageProps } from 'gatsby';
 import React, { FC, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
@@ -10,7 +9,8 @@ import {
   JobDutiesList,
   JobTechnologies,
   JobTechnologiesHeader,
-  PersonContact, PersonContactBlock,
+  PersonContact,
+  PersonContactBlock,
   PersonName,
   PrintButton,
   ProfileImage,
@@ -27,10 +27,45 @@ import {
   ResumeSectionContent,
   ResumeSections,
   ResumeSectionTitle,
-  ResumeSkills, ResumeSkillsColumns,
+  ResumeSkills,
+  ResumeSkillsColumns,
 } from '../components/resume/index.';
+import SEO from '../components/SEO';
 
-const ResumeRoute: FC = () => {
+const description = `
+Back-end Engineer, Team Lead, sometimes DevOps. Addicted Node.js and TypeScript, Serverless, AWS Lambdas.
+I believe that programming and computer science entirely is my calling in life. I develop my technical
+and soft skills; get new experience and knowledge to be a role model in my field.
+`;
+
+interface ResumeRouteProps {
+  profileImage: {
+    childImageSharp: {
+      fixed: {
+        src: string;
+        height: number;
+        width: number;
+      };
+    };
+  };
+}
+
+const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRouteProps>) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const {
+    data: {
+      profileImage: {
+        childImageSharp: { fixed },
+      },
+    },
+  } = props;
+  const coverImgFixed = {
+    src: fixed.src,
+    height: fixed.height,
+    width: fixed.width,
+  };
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -42,6 +77,12 @@ const ResumeRoute: FC = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <ResumeMain ref={componentRef}>
+      <SEO
+        title="Maxim Vynohradov | Senior Software Engineer"
+        description={description}
+        image={coverImgFixed}
+        pathname="https://maxvynohradov.github.io/me"
+      />
       <PrintButton onClick={handlePrint}>Print resume</PrintButton>
       <ResumeSections>
         <ResumeSectionTitle>Personal Profile</ResumeSectionTitle>
@@ -58,9 +99,9 @@ const ResumeRoute: FC = () => {
                     <PersonContact href="https://twitter.com/max_vynohradov">Twitter</PersonContact>
                     <PersonContact href="mailto:vinogradov.max97@gmail.com">Email</PersonContact>
                   </PersonContactBlock>
-                  I believe that programming and computer science entirely is my
-                  calling in life. I develop my technical and soft skills; get new experience and knowledge to be a role
-                  model in my field. Also, I&apos;m big of Serverless, AWS Lambdas, Node.js and TypeScript.
+                  I believe that programming and computer science entirely is my calling in life. I develop my technical
+                  and soft skills; get new experience and knowledge to be a role model in my field. Also, I&apos;m big
+                  fan of Serverless, AWS Lambdas, Node.js and TypeScript.
                 </ProfileParagraphText>
               </ProfileParagraph>
             </ResumeParagraph>
@@ -476,5 +517,19 @@ const ResumeRoute: FC = () => {
     </ResumeMain>
   );
 };
+
+export const query = graphql`
+  query MeQuery {
+    profileImage: file(relativePath: { eq: "profile.jpg" }) {
+      childImageSharp {
+        fixed {
+          height
+          width
+          src
+        }
+      }
+    }
+  }
+`;
 
 export default ResumeRoute;

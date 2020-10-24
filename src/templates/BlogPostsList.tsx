@@ -33,7 +33,6 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
         title="Vynohradov Blog"
         description="Blog about programing, program architecture, JavaScript, Node.js, TypeScript, Serverless and so on"
         image={seoImage}
-        pathname="https://maxvynohradov.github.io/me"
       />
       {postList.map((item: PostItemProps, idx: number) => (
         <PostListItem key={idx.toString()} {...item} />

@@ -7,6 +7,14 @@ import React from 'react';
 
 import { App } from './src/components';
 
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
+    }),
+  );
+});
+
 deckDeckGoHighlightElement();
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

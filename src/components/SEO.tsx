@@ -2,14 +2,12 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
-type Meta = Array<{ property?: string; name?: string; content: unknown }>;
-
 export interface SeoProps {
   description?: string;
   lang?: string;
   title?: string;
   pathname?: string;
-  meta?: Meta;
+  meta?: [];
   image: {
     src: string;
     height: number;
@@ -59,8 +57,6 @@ const SEO: FC<SeoProps> = ({ description, lang, meta = [], image: metaImage, tit
     { name: 'telegram:channel', content: '@vynohradov_blog' },
   ]
     .concat(additionalMeta)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     .concat(meta);
   return (
     <Helmet

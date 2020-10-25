@@ -3,7 +3,7 @@ import Img, { FluidObject } from 'gatsby-image';
 import React, { FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
-export const ResumeMain = styled.div`
+export const ResumeMain = styled.div<{ ref: unknown }>`
   margin: 20px 0 45px 0;
   font-size: 1.1em;
   color: black;

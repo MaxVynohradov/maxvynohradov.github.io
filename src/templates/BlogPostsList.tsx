@@ -7,7 +7,43 @@ import { PostItemProps } from '../components/blog/interfaces/PostItemProps';
 import { PostListItem } from '../components/blog/PostListItem';
 import SEO from '../components/SEO';
 
-const BlogPostsList: FC<PageProps> = (props: PageProps) => {
+interface BlogPostsListDataEdges {
+  node: {
+    slug: string;
+    frontmatter: {
+      title: string;
+      description: string;
+      originalUrl: string;
+      date: Date;
+      coverImg: {
+        childImageSharp: {
+          fluid: {
+            src: string;
+          };
+        };
+      };
+      tags: string[];
+    };
+    body: string;
+  };
+}
+
+interface BlogPostsListDataProps {
+  profileImage: {
+    childImageSharp: {
+      fixed: {
+        src: string;
+        width: number;
+        height: number;
+      };
+    };
+  };
+  allMdx: {
+    edges: BlogPostsListDataEdges[];
+  };
+}
+
+const BlogPostsList: FC<PageProps<BlogPostsListDataProps>> = (props: PageProps<BlogPostsListDataProps>) => {
   const { data } = props;
   const postList = data.allMdx.edges.map(({ node: { slug, frontmatter, body } }) => ({
     slug,
@@ -19,8 +55,6 @@ const BlogPostsList: FC<PageProps> = (props: PageProps) => {
     title: frontmatter.title,
     coverImgSrc: frontmatter.coverImg.childImageSharp.fluid.src,
   }));
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const seoImage = data.profileImage.childImageSharp.fixed;
   return (
     <div>

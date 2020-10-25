@@ -50,8 +50,6 @@ interface ResumeRouteProps {
 }
 
 const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRouteProps>) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const {
     data: {
       profileImage: {
@@ -65,16 +63,12 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
     width: fixed.width,
   };
 
-  const componentRef = useRef();
+  const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     content: () => componentRef.current,
   });
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     <ResumeMain ref={componentRef}>
       <SEO
         title="Maxim Vynohradov | Senior Software Engineer"

@@ -42,7 +42,6 @@ interface NavLinksProps {
 }
 
 export const NavLinks: FC<NavLinksProps> = ({ previous, next }: NavLinksProps) => {
-  console.log('previous', previous);
   return (
     <NavLinksContainer>
       {previous?.slug ? (

@@ -33,6 +33,10 @@ export const ResumeSectionTitle = styled.h1`
     width: 100%;
     padding-bottom: 15px;
   }
+  @media print {
+    font-size: 18px;
+    width: 15%;
+  }
 `;
 
 export const ResumeSectionContent = styled.div`
@@ -47,6 +51,14 @@ export const ResumeArticle = styled.article`
   display: block;
 `;
 
+export const PrintPageBreak = styled.div`
+  display: none;
+  @media print {
+    display: block;
+    page-break-before: always;
+  }
+`;
+
 export const ResumeJobHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -58,6 +70,10 @@ export const ResumeArticleSubtitle = styled.h2`
   font-weight: 800;
   margin-bottom: 8px;
   margin-top: 3px;
+
+  @media print {
+    font-size: 18px;
+  }
 `;
 
 export const ResumeJobPlace = styled.a`
@@ -163,6 +179,11 @@ export const ResumeSkillsColumns = styled.div`
       color: #6745b0;
       font-weight: 600;
       margin: 5px 0 5px 0;
+
+      @media print {
+        display: inline-block;
+        margin: 5px 15px 5px 0;
+      }
     }
     span {
       font-size: 14px;

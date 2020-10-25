@@ -36,10 +36,14 @@ const GlobalStyle = createGlobalStyle`
       overflow: initial !important;
       -webkit-print-color-adjust: exact;
     }
+    body {
+      padding: 10mm 10mm 10mm 20mm;
+      background-color: white;
+    }
   }
   @page {
     size: auto;
-    margin: 10mm 10mm 10mm 20mm;
+    margin: 0;
   }
 `;
 

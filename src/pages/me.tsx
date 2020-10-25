@@ -13,6 +13,7 @@ import {
   PersonContactBlock,
   PersonName,
   PrintButton,
+  PrintPageBreak,
   ProfileImage,
   ProfileParagraph,
   ProfileParagraphText,
@@ -143,6 +144,7 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
             </ResumeJobDetails>
           </ResumeArticle>
 
+          <PrintPageBreak />
           <ResumeArticle>
             <ResumeJobHeader>
               <ResumeArticleSubtitle>Team Lead, Back-end Developer</ResumeArticleSubtitle>
@@ -214,6 +216,7 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
                   </JobDutiesLI>
                 </JobDutiesList>
 
+                <PrintPageBreak />
                 <JobDomain>
                   <JobDomainName>Customer: </JobDomainName>
                   Cogeco Inc.
@@ -300,6 +303,60 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
           </ResumeArticle>
         </ResumeSectionContent>
       </ResumeSections>
+
+      <ResumeSections>
+        <ResumeSectionTitle>Courses</ResumeSectionTitle>
+        <ResumeSectionContent>
+          <ResumeArticle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Cucumber with JavaScript | TestAutomationU</ResumeArticleSubtitle>
+              <ResumeJobDate>Jun 2020</ResumeJobDate>
+            </ResumeJobHeader>
+            <ResumeJobPlace target="_blank" href="https://testautomationu.applitools.com/certificate/?id=7ba2c85b">
+              Certificate Link
+            </ResumeJobPlace>
+          </ResumeArticle>
+          <ResumeArticle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>Jest Javascript Testing Framework | TestAutomationU</ResumeArticleSubtitle>
+              <ResumeJobDate>Jul 2020</ResumeJobDate>
+            </ResumeJobHeader>
+            <ResumeJobPlace target="_blank" href="https://testautomationu.applitools.com/certificate/?id=5d4e5acc">
+              Certificate Link
+            </ResumeJobPlace>
+          </ResumeArticle>
+          <ResumeArticle>
+            <ResumeJobHeader>
+              <ResumeArticleSubtitle>M320: Data Modeling | MongoDB University</ResumeArticleSubtitle>
+              <ResumeJobDate>Jun 2020</ResumeJobDate>
+            </ResumeJobHeader>
+            <ResumeJobPlace
+              target="_blank"
+              href="http://university.mongodb.com/course_completion/ee7e617b-77d2-4b5f-8174-ee66ab337f10"
+            >
+              Certificate Link
+            </ResumeJobPlace>
+          </ResumeArticle>
+        </ResumeSectionContent>
+      </ResumeSections>
+      <PrintPageBreak />
+      <ResumeSections>
+        <ResumeSectionTitle>Languages</ResumeSectionTitle>
+        <ResumeSectionContent>
+          <ResumeArticle>
+            <ResumeArticleSubtitle>English</ResumeArticleSubtitle>
+            <ResumeJobPlace
+              target="_blank"
+              href="http://university.mongodb.com/course_completion/ee7e617b-77d2-4b5f-8174-ee66ab337f10"
+            >
+              EF SET English Certificate 74/100 (C2 Proficient)
+            </ResumeJobPlace>
+            <ResumeArticleSubtitle>Ukrainian</ResumeArticleSubtitle>
+            <ResumeArticleSubtitle>Russian</ResumeArticleSubtitle>
+          </ResumeArticle>
+        </ResumeSectionContent>
+      </ResumeSections>
+
       <ResumeSections>
         <ResumeSectionTitle>Key Skills</ResumeSectionTitle>
         <ResumeSectionContent>
@@ -448,6 +505,7 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
           </ResumeSkills>
         </ResumeSectionContent>
       </ResumeSections>
+      <PrintPageBreak />
       <ResumeSections>
         <ResumeSectionTitle>Also Have Experience With</ResumeSectionTitle>
         <ResumeSectionContent>
@@ -496,16 +554,6 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
               </div>
             </ResumeSkillsColumns>
           </ResumeSkills>
-        </ResumeSectionContent>
-      </ResumeSections>
-      <ResumeSections>
-        <ResumeSectionTitle>Languages</ResumeSectionTitle>
-        <ResumeSectionContent>
-          <ResumeArticle>
-            <ResumeArticleSubtitle>English</ResumeArticleSubtitle>
-            <ResumeArticleSubtitle>Ukrainian</ResumeArticleSubtitle>
-            <ResumeArticleSubtitle>Russian</ResumeArticleSubtitle>
-          </ResumeArticle>
         </ResumeSectionContent>
       </ResumeSections>
     </ResumeMain>

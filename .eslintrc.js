@@ -226,6 +226,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 'error',
     '@typescript-eslint/quotes': ['error', 'single'],
     '@typescript-eslint/ban-ts-ignore': 'off',
+    'react/jsx-props-no-spreading': 'warn',
   },
   settings: {
     'import/parsers': {

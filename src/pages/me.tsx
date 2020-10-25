@@ -342,7 +342,6 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
               <div>
                 <h4>IaC</h4>
                 <span>AWS CloudFormation</span>
-                <span>Pulumi</span>
               </div>
             </ResumeSkillsColumns>
             <ResumeSkillsColumns>
@@ -422,7 +421,7 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
                 <span>Mocha</span>
                 <span>Chai</span>
                 <span>Nyc</span>
-                <span>Mutation Testing / Stryker</span>
+                <span>Stryker</span>
                 <span>Testing Coverege</span>
                 <span>Ava</span>
                 <span>Sinon</span>
@@ -492,6 +491,8 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
               <div>
                 <h4>And others...</h4>
                 <span>jQuery</span>
+                <span>Pulumi</span>
+                <span>AWS SAM</span>
               </div>
             </ResumeSkillsColumns>
           </ResumeSkills>

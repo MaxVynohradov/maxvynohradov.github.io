@@ -54,7 +54,6 @@ const SEO: FC<SeoProps> = ({
     { name: 'twitter:card', content: 'summary_large_image' },
   ];
   const additionalMeta = metaImage ? ifMetaExists : [{ name: 'twitter:card', content: 'summary' }];
-  console.log('keywords', keywords, (keywords.length ? keywords : site.siteMetadata.keywords).join(','));
   const finalMeta = [
     { name: 'description', content: metaDescription },
     { name: 'keywords', content: (keywords.length ? keywords : site.siteMetadata.keywords).join(',') },

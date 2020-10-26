@@ -8,6 +8,7 @@ export interface SeoProps {
   title?: string;
   pathname?: string;
   meta?: [];
+  keywords?: string[];
   image: {
     src: string;
     height: number;
@@ -15,7 +16,15 @@ export interface SeoProps {
   };
 }
 
-const SEO: FC<SeoProps> = ({ description, lang, meta = [], image: metaImage, title, pathname }: SeoProps) => {
+const SEO: FC<SeoProps> = ({
+  description,
+  lang,
+  meta = [],
+  keywords = [],
+  image: metaImage,
+  title,
+  pathname,
+}: SeoProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -45,9 +54,10 @@ const SEO: FC<SeoProps> = ({ description, lang, meta = [], image: metaImage, tit
     { name: 'twitter:card', content: 'summary_large_image' },
   ];
   const additionalMeta = metaImage ? ifMetaExists : [{ name: 'twitter:card', content: 'summary' }];
+  console.log('keywords', keywords, (keywords.length ? keywords : site.siteMetadata.keywords).join(','));
   const finalMeta = [
     { name: 'description', content: metaDescription },
-    { name: 'keywords', content: site.siteMetadata.keywords.join(',') },
+    { name: 'keywords', content: (keywords.length ? keywords : site.siteMetadata.keywords).join(',') },
     { property: 'og:title', content: title },
     { property: 'og:description', content: metaDescription },
     { property: 'og:type', content: 'website' },

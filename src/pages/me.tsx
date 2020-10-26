@@ -1,3 +1,6 @@
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, PageProps } from 'gatsby';
 import React, { FC, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
@@ -11,11 +14,13 @@ import {
   JobTechnologiesHeader,
   PersonContact,
   PersonContactBlock,
+  PersonContactToPrint,
   PersonName,
   PrintButton,
   PrintPageBreak,
   ProfileImage,
   ProfileParagraph,
+  ProfileParagraphLeft,
   ProfileParagraphText,
   ResumeArticle,
   ResumeArticleSubtitle,
@@ -30,7 +35,7 @@ import {
   ResumeSectionTitle,
   ResumeSkills,
   ResumeSkillsColumns,
-} from '../components/resume/index.';
+} from '../components/resume';
 import SEO from '../components/SEO';
 
 const description = `
@@ -84,7 +89,9 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
           <ResumeArticle>
             <ResumeParagraph>
               <ProfileParagraph>
-                <ProfileImage />
+                <ProfileParagraphLeft>
+                  <ProfileImage />
+                </ProfileParagraphLeft>
                 <ProfileParagraphText>
                   <PersonName>Maxim Vynohradov</PersonName>
                   <ResumeArticleSubtitle>Senior Software Engineer</ResumeArticleSubtitle>
@@ -92,6 +99,20 @@ const ResumeRoute: FC<PageProps<ResumeRouteProps>> = (props: PageProps<ResumeRou
                     <PersonContact href="https://www.linkedin.com/in/max-vynohradov/">LinkedIn</PersonContact>
                     <PersonContact href="https://twitter.com/max_vynohradov">Twitter</PersonContact>
                     <PersonContact href="mailto:vinogradov.max97@gmail.com">Email</PersonContact>
+                  </PersonContactBlock>
+                  <PersonContactBlock>
+                    <PersonContactToPrint>
+                      <FontAwesomeIcon icon={faPhone} />
+                      &nbsp; +380951096937
+                    </PersonContactToPrint>
+                    <PersonContactToPrint>
+                      <FontAwesomeIcon icon={faEnvelope} />
+                      &nbsp; vinogradov.max97@gmail.com
+                    </PersonContactToPrint>
+                    <PersonContactToPrint>
+                      <FontAwesomeIcon icon={faTwitter} />
+                      &nbsp; @max_vynohradov
+                    </PersonContactToPrint>
                   </PersonContactBlock>
                   I believe that programming and computer science entirely is my calling in life. I develop my technical
                   and soft skills; get new experience and knowledge to be a role model in my field. Also, I&apos;m big

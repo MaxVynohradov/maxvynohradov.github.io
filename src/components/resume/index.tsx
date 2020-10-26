@@ -10,6 +10,7 @@ export const ResumeMain = styled.div<{ ref: unknown }>`
   @media print {
     background-color: white;
     font-size: 18px;
+    margin: 0;
   }
 `;
 
@@ -73,6 +74,7 @@ export const ResumeArticleSubtitle = styled.h2`
 
   @media print {
     font-size: 18px;
+    margin-bottom: 0;
   }
 `;
 
@@ -82,6 +84,10 @@ export const ResumeJobPlace = styled.a`
   font-style: italic;
   color: #6745b0;
   margin-bottom: 5px;
+
+  @media print {
+    margin-bottom: 0;
+  }
 `;
 
 export const ResumeJobDate = styled.p`
@@ -100,6 +106,11 @@ export const JobDutiesList = styled.ul`
   margin-inline-end: 0;
   padding-inline-start: 30px;
   overflow-wrap: break-word;
+
+  @media print {
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+  }
 `;
 
 export const JobDutiesLI = styled.li`
@@ -291,15 +302,36 @@ export const ProfileParagraph = styled.div`
   display: flex;
 `;
 
+export const ProfileParagraphLeft = styled.div`
+  display: flex;
+  width: 45%;
+  flex-direction: column;
+`;
+
 export const ProfileParagraphText = styled.div`
   display: block;
   width: 100%;
+  padding-left: 10px;
 `;
 
 export const PersonContact = styled.a`
   margin: 0 15px 5px 0;
   font-style: italic;
   color: #6745b0;
+  @media print {
+    display: none;
+  }
+`;
+
+export const PersonContactToPrint = styled.p`
+  display: none;
+  margin: 0 5px 0 0;
+  font-style: italic;
+  font-size: 15px;
+  @media print {
+    display: block;
+    width: 100%;
+  }
 `;
 
 export const PersonContactBlock = styled.div`
@@ -310,6 +342,8 @@ export const PersonContactBlock = styled.div`
     justify-content: center;
   }
   @media print {
+    width: 100%;
+    flex-direction: column;
     justify-content: left;
   }
 `;
@@ -327,16 +361,17 @@ export const PersonName = styled.p`
 const StyledProfileImage = styled(Img)<{ fixed: FluidObject | FluidObject[] }>`
   display: block !important;
   margin: 0 15px 10px 10px;
-  width: 500px;
+  width: 90%;
   height: 240px;
   border-radius: 15px;
+
   @media screen and (max-width: 960px) {
-    width: 800px;
-    height: 140px;
+    width: 90%;
+    height: 180px;
   }
   @media print {
-    width: 0;
-    height: 0;
+    width: 90%;
+    height: 180px;
   }
 `;
 

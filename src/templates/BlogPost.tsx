@@ -81,7 +81,7 @@ const BlogPost: FC<PageProps<unknown, PageContext>> = (
       id: slug,
       title: `Comments on '${title}'`,
       body: `This issue exists to host comments for ${siteUrl}${slug}`,
-      distractionFreeMode: false,
+      distractionFreeMode: true,
     });
     gitalk.render('gitalk');
   }, [title, slug, siteUrl]);

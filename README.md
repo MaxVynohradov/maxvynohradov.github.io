@@ -13,3 +13,5 @@
 
  <a target="_blank" href="https://github-readme-medium-recent-article.vercel.app/medium/@vinogradov.max97/1"><img src="https://github-readme-medium-recent-article.vercel.app/medium/@vinogradov.max97/1" alt="Recent Article 1"> 
 ---
+
+[medium]: https://medium.com/@vinogradov.max97

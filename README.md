@@ -1,5 +1,7 @@
 ### VYNOHRADOV BLOG
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce02b1ef6fbc46e38828eda4c11d09e3)](https://app.codacy.com/gh/MaxVynohradov/maxvynohradov.github.io?utm_source=github.com&utm_medium=referral&utm_content=MaxVynohradov/maxvynohradov.github.io&utm_campaign=Badge_Grade)
+
 ---
 
 ### 📝 &nbsp;&nbsp; Latest Blog Posts

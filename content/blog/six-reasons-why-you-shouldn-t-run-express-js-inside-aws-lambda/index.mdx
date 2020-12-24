@@ -1,0 +1,80 @@
+---
+title: "Six reasons why you shouldn't run Express.js inside AWS Lambda"
+date: "2020-12-10T12:12:03.284Z"
+coverImg:  "./coverImg.jpeg"
+tags: ["serverless", "javascript", "aws", "nodejs", "expressjs"]
+description: "Tradeoffs to consider when choosing to use Express in Lambda. Some thoughts on why using Express.js inside AWS Lambda is a design anti-pattern and how to give it up without pain."
+---
+
+Some facts why usage Express.js inside AWS Lambda is pitiful design anti-pattern and how to give it up without pain.
+
+---
+
+Last few years popularity of NPM packages, that allow you to use Express.js inside AWS Lambda handler, grow up rapidly. These packages provide some functionality that allows you to run Express.js middlewares, controllers with some limitations, instead of plain AWS Lambda handler.
+Some examples of such libraries:
+
+[aws-serverless-express](https://www.npmjs.com/package/aws-serverless-express)
+> Run serverless applications and REST APIs using your existing Node.js application framework, on top of AWS Lambda
+
+[serverless-http](https://www.npmjs.com/package/serverless-http)
+
+But why developers decided to do so? They’re just a few foremost reasons, that I’ve usually met in practice:
+
+* No interest to learn new approaches to write handlers for API.For different reasons — want to use serverless architecture, but have not time to adopt and re-write existed Express.js based solution to Lambda handlers.
+* Wish to use the existing Express.js functionality and ecosystem, mostly it’s about huge numbers of third-party middleware.
+* Tries to reduce costs using AWS Lambda instead of development server (like EC2, AWS ECS, AWS EKS, etc.)
+
+---
+
+**So below the list of reasons why the usage of Express.js inside AWS Lambda in most cases are redundant, you probably get many drawbacks from this approach.**
+
+### *Increasing node_modules size and cold starts*
+
+Simple point — the bigger node_modules do your artifact have, the bigger cold starts of AWS Lambda will you have. With no exceptions. Raw Express.js is near 541.1 KB, but you also need additional dependencies, mostly middleware, that can increase your node_modules several times.
+
+### *Additional operational time*
+
+When you use standalone Express.js on the server (standard way), each HTTP request is some kind of text that the server parses to a well-known request object. Lambdas that people tried to use with Express.js inside, usually runs under API Gateway or AWS Application Load Balancer, and data that come from this event source are already parsed by API GW and ALB! Yes, it’s different, but anyway.
+When you use Express.js inside AWS Lambda your “system” make the next thing with input HTTP data:
+  1. AWS API GW or AWS ALB parses HTTP request and convert them to the event payload.
+  2. The library that wraps the Express.js server maps the lambda event to server request.
+  3. Express.js one more time converts this to its request object.
+  4. The similar with a response — the library that wraps Express.js converts HTTP response to AWS Lambda response object.
+
+So many supplementary conversions. Sometimes it looks like just wasting processor time.
+
+### *AWS Lambda has a different limitation, that can be unexpected for your Express.js application:*
+
+   First of all, lambdas are stateless — each AWS Lambda instance is an AWS Firecracker container, that will shut down in some time after inactivity. So you cannot simply persist data and share them across all lambda instances. The same situation with sessions — to use it with AWS Lambda, you need additional storage, for instance, Redis instance hosted as AWS ElasticCache.
+
+   Lambdas container can live during several handler executions (warm lambdas), but in any way, it quits unexpectedly. And this could break some tools or make their behavior unpredictable. The most impressive case is related to buffering, loggers, and any error trackers, like Sentry. Usually, they don’t send all logs, data immediately, they buffering them firstly, and then send several logs items at once, to make this more efficient. But when your lambda’s container quits, time-to-time these buffers do not have time to be flushed into storage or third-party services. For sure, we can disable buffering, but some of the services require another SDKs, that specific for AWS Lambda. And they cannot be re-used simply as Express.js middleware — you should wrap them up as your own middleware, that double work.
+
+   Also, you cannot use web-sockets (WebSockets, socket.io) inside the Express.js application, for the same reason — the lifetime of lambda execution container. But at the same time, AWS API GW supports web sockets, but they are implemented in another way, you cannot connect socket.io to them.
+
+### *Some things that you are used to do in the Express.js app are different in AWS Lambda and has more adequate alternatives*
+
+Despite all disadvantages, the embedded middleware pattern in Express.js is probably one of the popular things in the Node.js world. However, there is no need to use Express.js just for this, coz at least one middleware library is suited for AWS Lambda better:
+[@middy/core](https://www.npmjs.com/package/@middy/core)
+> Core component of the middy framework, the stylish Node.js middleware engine for AWS Lambda To install middy you can www.npmjs.com
+
+Also, it implements an onion-like middleware pattern, that is much more flexible than Express.js can provide for you.
+
+### *Best practices for Express.js and AWS Lambda are different*
+
+At least you can easily find out the next point — security protection approaches are different. When Express.js best practice guide proposes to use Helmet.js library, it doesn’t applicable to AWS Lambdas. AWS proposes to use AWS WAF service that:
+ > Protect your web applications from common web exploits
+
+### *Lost benefits from individual packaging of lambdas*
+
+When you write classic AWS Lambda handlers, you usually can package each lambda artifact separately, to reduce each artifact size. But when you use Express.js, you cannot do this — all lambdas require the same dependencies. Technically you can, but all of them will have the same size, which negates their advantages. Also, in this case, serverless-webpack-plugin cannot optimize imports correctly, because technically each lambda will have the same dependencies tree.
+
+---
+
+Despite all of the above, I believe, that there some cases when the usage of Express.js inside AWS Lambda are valid and justified:
+
+* *Pet projects* — coz great AWS Free Tier, probably you can run them for free.
+* Your service is *not mission-critical*, and you are okay with all issues described above — so, okay, you can use it without any doubts (but *don’t forget about technical debt*).
+
+---
+
+Hope this information will be useful and you will not forget this when decide to use Express.js inside AWS Lambda the next time.
